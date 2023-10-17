@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Listings</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="left-section">
+          <h1>Job Listings</h1>
+        </div>
+        <div class="right-section">
+          <div class="user-info">
+            <div class="user-icon">U</div>
+            <span id="user_name">User Name</span>
+          </div>
+          <button id="logout_btn" class="logout-button">Logout</button>
+
+          <!-- Add a responsive menu icon for smaller screens -->
+        </div>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="job-container-header">
+        <a href="/createjob.html" class="create-button">create</a>
+      </div>
+      <div id="job-list">
+        <!-- Job listings will be displayed here -->
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">&copy; 2023 Job Listings</div>
+    </footer>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="./index.js"></script>
+</html>

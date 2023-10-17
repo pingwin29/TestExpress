@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Verification</title>
+    <link rel="stylesheet" href="emailc.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Email Verification</h1>
+      <p>
+        Please enter the verification code sent to your email address to complete the registration
+        process.
+      </p>
+
+      <form>
+        <label for="verification-code">Verification Code:</label>
+        <input type="text" id="verification-code" name="verification-code" required />
+        <br />
+        <button id="verify-btn">Verify</button>
+      </form>
+
+      <p>
+        If you haven't received the email, you can
+        <a href="#" id="resend-link">resend the verification email</a>.
+      </p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <script src="./emailc.js">
+      // You can add JavaScript here to handle form submission and resend verification emails.
+    </script>
+  </body>
+</html>

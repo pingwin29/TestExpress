@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="reg.css" />
+    <title>Register</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Register</h1>
+      <div class="form">
+        <form id="register-form">
+          <div class="input-container">
+            <i class="fa fa-user"></i>
+            <input type="text" id="name" name="name" placeholder="Full Name" required />
+          </div>
+          <div class="input-container">
+            <i class="fa fa-envelope"></i>
+            <input type="email" id="email" name="email" placeholder="Email" required />
+          </div>
+          <div class="input-container">
+            <i class="fa fa-lock"></i>
+            <input type="password" id="password" name="password" placeholder="Password" required />
+          </div>
+          <div class="input-container">
+            <i class="fa fa-lock"></i>
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              required
+            />
+          </div>
+          <button id="register-button">Register</button>
+        </form>
+      </div>
+      <p>Already have an account? <a href="/login.html">Login</a></p>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="./reg.js"></script>
+</html>

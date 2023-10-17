@@ -1,0 +1,200 @@
+Reset some default styles and apply a basic font * {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+/* Header styles */
+header {
+  background-color: #007bff;
+  color: #fff;
+  padding: 15px;
+}
+
+/* Navigation bar styles */
+.container:first-child {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .left-section {
+  float: left;
+  color: #007bff;
+}
+
+header .right-section {
+  float: right;
+  color: #007bff;
+  text-transform: uppercase;
+}
+header .right-section div {
+  display: inline-block;
+}
+.logout-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: linear-gradient(45deg, #ff416c, #ff4b2b);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-left: 20px;
+}
+
+.logout-button:hover {
+  background: linear-gradient(45deg, #ff4b2b, #ff416c);
+}
+/* User options styles */
+#user-options {
+  float: right;
+}
+
+#user_name {
+  font-weight: bolder;
+  font-size: 24px;
+}
+
+.create-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.3s;
+  text-decoration: none !important;
+}
+
+.create-button:hover {
+  background-color: #0056b3;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+/* Container styles */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Job list styles */
+.job-container-header {
+  display: flex;
+  justify-content: flex-end;
+}
+#job-list {
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+
+.job {
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.job h3 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Job info styles */
+.job-card {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+}
+
+.job-status {
+  font-weight: bold;
+  color: #007bff;
+  font-size: 16px;
+}
+
+.position {
+  margin: 10px 0;
+  font-size: 24px;
+}
+
+.creator-type {
+  color: #777;
+  font-size: 14px;
+}
+
+.company {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  padding: 8px 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s;
+}
+
+.edit-button {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.delete-button {
+  background-color: #ff4500;
+  color: #fff;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+/* Footer styles */
+footer {
+  background-color: #333;
+  color: #1477da;
+  text-align: center;
+  padding: 10px 0;
+}
