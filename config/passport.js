@@ -27,8 +27,8 @@ passport.use(
         done(null, user.id);
       } else {
         const newUser = await GoogleUser.create({
-          googleId: email.id,
-          name: email.displayName,
+          googleId: id,
+          name: displayName,
         });
         done(null, newUser.id);
       }
