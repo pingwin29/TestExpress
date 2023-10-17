@@ -88,6 +88,9 @@ if (query) {
   localStorage.setItem("type", query);
 }
 
+if (!localStorage.getItem("type")) {
+  location.href = "/login.html";
+}
 const type = localStorage.getItem("type");
 
 console.log({ type });

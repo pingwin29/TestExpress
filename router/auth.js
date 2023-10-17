@@ -16,10 +16,7 @@ router.route("/forget").get(forgetPassword);
 router.route("/forget/changepass").patch(changePassword);
 router.route("/logout").get(logout);
 
-router.route("/google").get((req, res, next) => {
-  console.log({ req });
-  return next();
-}, passport.authenticate("google", { scope: ["profile", "email"] }));
+router.route("/google").get(passport.authenticate("google", { scope: ["profile", "email"] }));
 router.route("/google/callback").get(
   passport.authenticate("google", {
     successRedirect: "/?type=session",
