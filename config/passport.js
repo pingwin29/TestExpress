@@ -16,7 +16,7 @@ passport.use(
     {
       clientID: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
-      callbackURL: "/api/v1/auth/google/callback",
+      callbackURL: "https://banwapp.onrender.com/api/v1/auth/google/callback",
     },
     async (accessToken, refreshToken, profile, done) => {
       const { id, displayName } = profile;
