@@ -16,7 +16,7 @@ if (type == "jwt") {
           { headers: { Authorization: `Bearer ${token}` } }
         )
         .then((response) => {
-          window.location.href = `/main.html`;
+          window.location.href = `/`;
         })
         .catch((error) => {
           alert(error.response.data.error);
