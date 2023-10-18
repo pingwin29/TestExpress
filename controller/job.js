@@ -6,7 +6,7 @@ const User = require("../model/User");
 const AllJobs = async (req, res, next) => {
   try {
     const jobs = await Jobs.find({});
-    res.status(200).json({ jobs: jobs, jobs_length: jobs.length, user: req.user.name });
+    res.status(200).json({ jobs: jobs, jobs_length: jobs.length, user: req.user });
   } catch (error) {
     next(error);
   }
@@ -30,8 +30,8 @@ const createJob = async (req, res, next) => {
     const { company, position } = req.body;
     const job = await Jobs.create({
       ...req.body,
-      createBy: req.user.userId || req.user._id,
-      userType: req.user.userId ? "jwt" : "session",
+      createBy: req.user.userId,
+      userType: req.user.type,
     });
 
     res.status(201).json({ job });

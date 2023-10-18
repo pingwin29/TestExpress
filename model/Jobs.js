@@ -18,8 +18,8 @@ const JobSchema = new Schema(
       default: "pending",
     },
     createBy: {
-      type: mongoose.Types.ObjectId,
-      ref: "User",
+      // type: mongoose.Types.ObjectId,
+      type: String,
       required: [true, "please Provide Creater Id"],
     },
     userType: {
