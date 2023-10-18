@@ -19,7 +19,7 @@ document.getElementById("change-btn").addEventListener("click", function (e) {
         })
         .then(function (response) {
           console.log(response);
-          window.location.href = `/`;
+          window.location.href = `/login.html`;
         })
         .catch(function (error) {
           alert(error.response.data.error);

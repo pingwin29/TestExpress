@@ -16,7 +16,8 @@ document.getElementById("login-button").addEventListener("click", function (e) {
         window.location.href = `/`;
       })
       .catch((err) => {
-        alert(err);
+        alert(err.response.data.error);
+        console.log({ err });
       });
   } else {
     alert("Please fill in all fields.");
