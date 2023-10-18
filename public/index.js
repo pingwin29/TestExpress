@@ -94,6 +94,8 @@ function reqJobs(url, option = {}) {
     //request jobs
     axios.get(url, option).then((res) => {
       reqSucess(res);
+      document.getElementById("loading-page").style.display = "none";
+      document.getElementById("content").style.display = "block";
     });
   } catch (error) {
     location.href = "/login.html";
