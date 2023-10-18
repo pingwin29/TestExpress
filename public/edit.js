@@ -7,7 +7,7 @@ function main() {
   updateBtn.disabled = true;
 
   if (type == "jwt") {
-    getJob(`/api/v1/jobs/jwt/${job_id}`);
+    getJob(`/api/v1/jobs/jwt/${job_id}`, options);
   } else if (type == "session") {
     getJob(`/api/v1/jobs/session/${job_id}`);
   }
@@ -21,6 +21,7 @@ function updateHandler() {
 
   if (company && position) {
     if (type == "jwt") {
+      updateJob(`/api/v1/jobs/jwt/${job_id}`, body, options);
     } else if (type == "session") {
       updateJob(`/api/v1/jobs/session/${job_id}`, body);
     }
