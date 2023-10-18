@@ -22,8 +22,10 @@ if (!localStorage.getItem("type")) {
 //main output
 type = localStorage.getItem("type");
 
-if (type === "jwt") {
+if (type === "jwt" && localStorage.getItem("token")) {
   const token = localStorage.getItem("token");
   const payloadData = JSON.parse(atob(token.split(".")[1]));
   options = { headers: { Authorization: `Bearer ${token}` } };
+} else {
+  location.href = "/login.html";
 }
