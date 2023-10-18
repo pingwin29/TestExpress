@@ -1,16 +1,29 @@
-function checkType() {
+var type, options;
+
+function getParams(key) {
   const searchParams = new URLSearchParams(window.location.search);
+  return searchParams.get(key);
+}
 
-  const query = searchParams.get("type");
+function getEleId(id) {
+  return document.getElementById(id);
+}
 
-  if (query) {
-    localStorage.setItem("type", query);
-  }
+const query = getParams("type");
 
-  if (!localStorage.getItem("type")) {
-    location.href = "/login.html";
-  }
-  const type = localStorage.getItem("type");
+if (query) {
+  localStorage.setItem("type", query);
+}
 
-  return type;
+if (!localStorage.getItem("type")) {
+  location.href = "/login.html";
+}
+
+//main output
+type = localStorage.getItem("type");
+
+if (type === "jwt") {
+  const token = localStorage.getItem("token");
+  const payloadData = JSON.parse(atob(token.split(".")[1]));
+  options = { headers: { Authorization: `Bearer ${token}` } };
 }

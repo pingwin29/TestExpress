@@ -1,5 +1,15 @@
-const type = checkType();
-var options;
+//delete job fun
+function deletejobProcess(url, Element, option = {}) {
+  axios
+    .delete(url, option)
+    .then((res) => {
+      alert("deleted sucessfiull");
+      Element.remove();
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
 
 //job delete btn  handler
 function deleteHandler(e) {
@@ -7,33 +17,19 @@ function deleteHandler(e) {
   const job_id = parentElement.getAttribute("job_id");
 
   if (type == "jwt") {
-    axios
-      .delete(`/api/v1/jobs/jwt/${job_id}`, options)
-      .then((res) => {
-        alert("sucessfully deleted");
-        parentElement.remove();
-      })
-      .catch((err) => {
-        console.log({ err });
-      });
+    deletejobProcess(`/api/v1/jobs/jwt/${job_id}`, parentElement, options);
   }
 
   if (type == "session") {
-    axios
-      .delete(`/api/v1/jobs/session/${job_id}`)
-      .then((res) => {
-        alert("sucessfully deleted");
-        parentElement.remove();
-      })
-      .catch((err) => {
-        console.log({ err });
-      });
+    deletejobProcess(`/api/v1/jobs/session/${job_id}`, parentElement);
   }
 }
 
 //job edit btn  handler
 function editHandler(e) {
-  alert("edit");
+  const parentElement = e.target.closest(".job");
+  const job_id = parentElement.getAttribute("job_id");
+  location.href = `/edit.html?id=${job_id}`;
 }
 
 // for show create date formate from database time
@@ -50,7 +46,8 @@ function createDateFormat(jobcreateDate) {
 }
 
 //for display create list card html
-function createJobListing(jobData, userId) {
+function createJobListing(jobData, CurrentUserData) {
+  const { name, userId } = CurrentUserData;
   const { position, company, createdAt, status, userType, _id, createBy } = jobData;
   const formattedDate = createDateFormat(createdAt);
 
@@ -87,15 +84,8 @@ function reqSucess(res) {
   let { user, jobs } = res.data;
   document.getElementById("user_name").innerText = user.name;
   jobs.reverse().map((job) => {
-    createJobListing(job, user.userId);
+    createJobListing(job, user);
   });
-}
-
-// to create for jwt user
-function createHeader() {
-  const token = localStorage.getItem("token");
-  const payloadData = JSON.parse(atob(token.split(".")[1]));
-  options = { headers: { Authorization: `Bearer ${token}` } };
 }
 
 // to req job list fun
@@ -111,11 +101,13 @@ function reqJobs(url, option = {}) {
 }
 
 // main start point
+
 if (type == "jwt") {
-  createHeader();
   reqJobs("/api/v1/jobs/jwt", options);
 } else if (type == "session") {
   reqJobs("/api/v1/jobs/session");
+} else {
+  location.href = "/login.html";
 }
 
 //logout btn
