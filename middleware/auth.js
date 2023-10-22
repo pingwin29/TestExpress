@@ -18,6 +18,12 @@ const Authorization = async (req, res, next) => {
 
     const payload = jwt.verify(authToken, process.env.JWTTOKEN);
 
+    const user = await User.findById({ _id: payload.userId });
+    console.log({ user });
+    if (!user) {
+      throw new Unauthorized("Your Acc is Deleted");
+    }
+
     req.user = { ...payload, type: "jwt" };
 
     next();
