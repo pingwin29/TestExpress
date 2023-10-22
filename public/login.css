@@ -1,123 +1,115 @@
-/* Include FontAwesome for icons */
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
-
+@import url("https://fonts.googleapis.com/css2?family=Marcellus&family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+body {
+  background-image: linear-gradient(to top right, #20dfcd, #ce1e2e);
+  height: 100vh;
+  font-family: "Marcellus", serif;
+  font-family: "Roboto Mono", monospace;
+  color: #323535;
+}
 * {
   box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+  padding: 0;
   margin: 0;
+}
+.container {
+  background-color: #f4eded;
+  padding: 25px;
+  font-size: 14px;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+.main_header {
+  color: #fff;
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  line-height: 0.9em;
+  background: #ce1e2e;
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
-
-.container {
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+.sec_header h3 {
+  font-size: 22px;
   text-align: center;
-  max-width: 400px; /* Adjust the width as needed */
-  margin: 0 auto; /* Center the container */
 }
-
-.icon {
-  margin: 5px 0;
+.sec_header p {
+  text-align: center;
+  margin-bottom: 20px;
 }
-
-.icon img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
+.login_box_container {
 }
-
-h1 {
-  margin: 0;
-  color: #333;
-  font-size: 24px;
+.login_box {
+  background-color: transparent;
+  border: 1px solid #323535;
+  border-radius: 3px;
+  width: 100%;
+  margin-bottom: 15px;
 }
-
-.form {
-  margin: 20px 0;
-  text-align: left; /* Align form elements to the left */
-}
-
-.input-container {
-  position: relative;
-  margin-bottom: 12px;
-}
-
-.input-container i {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  color: #888;
-}
-
-input {
-  width: 100%; /* Make the input field full-width within its container */
+.login_box input {
+  background-color: transparent;
+  width: 100%;
   padding: 10px;
-  padding-left: 35px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-button {
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px 20px;
+  padding-left: 40px;
   border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  width: 100%; /* Make the button full-width */
+  outline: none;
+  color: #323535;
 }
-
-button:hover {
-  background-color: #0056b3;
+.login_box input::placeholder {
 }
-
-.google-button {
-  display: block; /* Display the Google button as a block element */
-  background-color: #fff;
-  color: #333;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 8px 16px;
-  text-decoration: none;
-  transition: background-color 0.3s;
-  text-align: center; /* Center the button text */
+.login_btn {
+  background-color: #ce1e2e;
+  margin-bottom: 10px;
+  font-size: 12px;
 }
-
-.google-button i {
-  margin-right: 10px;
-  color: #ff3e30;
+.login_btn:hover {
+  background-color: #921520;
 }
-
-.google-button:hover {
-  background-color: #eee;
+.forgort_ps {
 }
 
 .or {
-  margin: 10px 0;
-  color: #888;
-  font-weight: bold;
   text-align: center;
+  display: block;
+  margin: 10px 0px;
+}
+.btn {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  color: #fff;
+  text-transform: uppercase;
 }
 
-p {
-  color: #333;
-}
-
-/* Added style for the "Forgot Password" link */
-form p a {
-  color: #007bff;
+.google_btn {
+  background-color: #20dfcd;
+  font-size: 12px;
+  display: block;
+  text-align: center;
   text-decoration: none;
+  position: relative;
+  margin-bottom: 10px;
 }
 
-form p a:hover {
-  text-decoration: underline;
+.google_btn:hover {
+  background-color: #169d8f;
+}
+
+.google_logo {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
 }

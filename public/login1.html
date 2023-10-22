@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="login.css" />
+    <title>Login or Register</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="icon">
+        <img src="https://picsum.photos/200/300" alt="User Icon" />
+      </div>
+      <h1>Login</h1>
+      <div class="form">
+        <form>
+          <div class="input-container">
+            <i class="fa fa-user"></i>
+            <input type="text" id="email" name="username" placeholder="Username" required />
+          </div>
+          <div class="input-container">
+            <i class="fa fa-lock"></i>
+            <input type="password" id="password" name="password" placeholder="Password" required />
+          </div>
+          <button id="login-button">Login</button>
+          <p><a href="/forget.html">Forgot Password?</a></p>
+          <!-- Added "Forgot Password" link -->
+        </form>
+        <p class="or">OR</p>
+        <a href="/api/v1/auth/google" class="google-button">
+          <i class="fa fa-google"></i> Sign in with Google
+        </a>
+      </div>
+      <p>Don't have an account? <a href="/register.html">Register</a></p>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="./login.js"></script>
+</html>

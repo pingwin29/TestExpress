@@ -3,37 +3,56 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="login.css" />
-    <title>Login or Register</title>
+    <title>Document</title>
+    <link rel="stylesheet" href="./login.css" />
   </head>
   <body>
     <div class="container">
-      <div class="icon">
-        <img src="https://picsum.photos/200/300" alt="User Icon" />
+      <h1 class="main_header">
+        BANMAW <br />
+        GUIDE
+      </h1>
+      <div class="sec_header">
+        <h3>LOGIN</h3>
+        <p>we can easily know about our city</p>
       </div>
-      <h1>Login</h1>
-      <div class="form">
-        <form>
-          <div class="input-container">
-            <i class="fa fa-user"></i>
-            <input type="text" id="email" name="username" placeholder="Username" required />
-          </div>
-          <div class="input-container">
-            <i class="fa fa-lock"></i>
-            <input type="password" id="password" name="password" placeholder="Password" required />
-          </div>
-          <button id="login-button">Login</button>
-          <p><a href="/forget.html">Forgot Password?</a></p>
-          <!-- Added "Forgot Password" link -->
-        </form>
-        <p class="or">OR</p>
-        <a href="/api/v1/auth/google" class="google-button">
-          <i class="fa fa-google"></i> Sign in with Google
-        </a>
+      <div class="login_box_contianer">
+        <div class="login_box">
+          <input type="text" required class="" id="email" placeholder="Enter Your Email" />
+        </div>
+        <div class="login_box">
+          <input
+            type="password"
+            required
+            class=""
+            id="password"
+            placeholder="Enter Your Password"
+          />
+        </div>
+        <button class="login_btn btn" id="login-button">login</button>
+        <a href="/forget.html" class="forgort_ps">forgot password?</a>
       </div>
-      <p>Don't have an account? <a href="/register.html">Register</a></p>
+      <span class="or">OR</span>
+
+      <a class="btn google_btn" href="/api/v1/auth/google">
+        <img src="./media/google.png" class="google_logo" /> SING IN WIHT Google</a
+      >
+      <p class="register_p">Don't have an account? <a href="/register.html">Register</a></p>
     </div>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="./login.js"></script>
 </html>
+<!-- 
+
+<div class="login_box_contianer">
+<div class="login_box">
+<input type="text" class="" placeholder="Enter Your Email"></div>
+</input>
+</div>
+<div class="login_box">
+</div>
+</input>
+</div>
+
+<span>OR</span> -->
