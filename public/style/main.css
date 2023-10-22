@@ -37,10 +37,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-shadow: 1px 1px 20px #000;
 }
 .sec_header h3 {
   font-size: 22px;
   text-align: center;
+  margin-bottom: 20px;
 }
 .sec_header p {
   text-align: center;
