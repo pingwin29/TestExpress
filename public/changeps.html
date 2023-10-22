@@ -1,93 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <style>
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f2f2f2;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-      }
-      .container {
-        max-width: 400px;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: #fff;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
-      .container h2 {
-        text-align: center;
-        margin-bottom: 40px;
-      }
-      .form-group {
-        margin-bottom: 20px;
-      }
-      .form-group label {
-        display: block;
-        margin-bottom: 5px;
-      }
-      .form-group input {
-        width: 100%;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-      }
-      .btn {
-        background-color: #007bff;
-        color: #fff;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-        width: 100%;
-      }
-      .verification-code {
-        text-align: center;
-        font-size: 24px;
-        font-weight: bold;
-        margin-bottom: 20px;
-      }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./changeps.css" />
   </head>
   <body>
     <div class="container">
-      <h2>Change Password</h2>
-      <form id="passwordChangeForm">
-        <div class="form-group">
-          <label for="verificationCode">Enter Verification Code:</label>
-          <input type="text" id="verificationCode" name="verificationCode" required />
+      <h1 class="main_header">
+        BANMAW <br />
+        GUIDE
+      </h1>
+      <div class="sec_header">
+        <h3>Change Password</h3>
+      </div>
+      <div class="login_box_contianer">
+        <div class="login_box">
+          <input
+            type="text"
+            id="verificationCode"
+            name="verificationCode"
+            required
+            placeholder="Enter Verification Code:"
+          />
         </div>
-        <div class="form-group">
-          <label for="newPassword">New Password:</label>
-          <input type="password" id="newPassword" name="newPassword" required />
+        <div class="login_box">
+          <input
+            type="password"
+            id="newPassword"
+            name="newPassword"
+            required
+            placeholder="New Password:"
+          />
         </div>
-        <div class="form-group">
-          <label for="verifyPassword">Confirm New Password:</label>
-          <input type="password" id="rePassword" name="verifyPassword" required />
+        <div class="login_box">
+          <input
+            type="password"
+            id="rePassword"
+            name="verifyPassword"
+            required
+            placeholder="Confirm New Password:"
+          />
         </div>
-        <div class="form-group">
-          <button type="button" class="btn" id="change-btn">Change Password</button>
-        </div>
-        <a href="/forget.html">back</a>
-      </form>
+        <button class="login_btn btn" id="change-btn">Change Password</button>
+      </div>
+
+      <p class="register_p"><a href="/forget.html">Back</a></p>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-    <script src="./changeps.js">
-      // You can add JavaScript here to handle form submission and resend verification emails.
-    </script>
   </body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <script src="./changeps.js">
+    // You can add JavaScript here to handle form submission and resend verification emails.
+  </script>
 </html>
-sss
+<!-- 
+
+<div class="login_box_contianer">
+<div class="login_box">
+<input type="text" class="" placeholder="Enter Your Email"></div>
+</input>
+</div>
+<div class="login_box">
+</div>
+</input>
+</div>
+
+<span>OR</span> -->

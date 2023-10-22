@@ -15,7 +15,7 @@ document.getElementById("verify-btn").addEventListener("click", function (e) {
       .then(function (response) {
         const token = response.data.token;
         localStorage.setItem("token", token);
-        localStroage.setItem("type", "jwt");
+        localStorage.setItem("type", "jwt");
         window.location.href = `/`;
       })
       .catch(function (error) {

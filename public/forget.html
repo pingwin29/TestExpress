@@ -3,26 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Forgot Password</title>
-    <link rel="stylesheet" href="forget.css" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./forget.css" />
   </head>
   <body>
     <div class="container">
-      <h1>Forgot Password</h1>
-      <p>
-        Enter your email address below, and we'll send you instructions on how to reset your
-        password.
-      </p>
-      <form>
-        <div class="input-container">
-          <i class="fa fa-envelope"></i>
+      <h1 class="main_header">
+        BANMAW <br />
+        GUIDE
+      </h1>
+      <div class="sec_header">
+        <h3>Forgot Password</h3>
+        <p>
+          Enter your email address below, and we'll send you instructions on how to reset your
+          password.
+        </p>
+      </div>
+      <div class="login_box_contianer">
+        <div class="login_box">
           <input type="email" id="email" name="email" placeholder="Email" required />
         </div>
-        <button id="reset-button">Reset Password</button>
-      </form>
-      <p>Remember your password? <a href="/">Log in</a></p>
+
+        <button class="login_btn btn" id="reset-button">Reset Password</button>
+      </div>
+      <p class="register_p">Remember your password? <a href="/login.html">login</a></p>
     </div>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="./forget.js"></script>
 </html>
+<!-- 
+
+<div class="login_box_contianer">
+<div class="login_box">
+<input type="text" class="" placeholder="Enter Your Email"></div>
+</input>
+</div>
+<div class="login_box">
+</div>
+</input>
+</div>
+
+<span>OR</span> -->

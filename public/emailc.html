@@ -3,34 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Email Verification</title>
-    <link rel="stylesheet" href="emailc.css" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./emailc.css" />
   </head>
   <body>
     <div class="container">
-      <h1>Email Verification</h1>
-      <p>
-        Please enter the verification code sent to your email address to complete the registration
-        process.
-      </p>
+      <h1 class="main_header">
+        BANMAW <br />
+        GUIDE
+      </h1>
+      <div class="sec_header">
+        <h3>Email Verification</h3>
+        <p>
+          Please enter the verification code sent to your email address to complete the registration
+          process.
+        </p>
+      </div>
+      <div class="login_box_contianer">
+        <div class="login_box">
+          <input type="text" id="verification-code" name="verification-code" required />
+        </div>
 
-      <form>
-        <label for="verification-code">Verification Code:</label>
-        <input type="text" id="verification-code" name="verification-code" required />
-        <br />
-        <button id="verify-btn">Verify</button>
-      </form>
-
-      <p>
-        If you haven't received the email, you can
-        <a href="#" id="resend-link">resend the verification email</a>.
-      </p>
+        <button class="login_btn btn" id="verify-btn">Verify</button>
+      </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-    <script src="./emailc.js">
-      // You can add JavaScript here to handle form submission and resend verification emails.
-    </script>
   </body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <script src="./emailc.js">
+    // You can add JavaScript here to handle form submission and resend verification emails.
+  </script>
 </html>
+<!-- 
+
+<div class="login_box_contianer">
+<div class="login_box">
+<input type="text" class="" placeholder="Enter Your Email"></div>
+</input>
+</div>
+<div class="login_box">
+</div>
+</input>
+</div>
+
+<span>OR</span> -->
