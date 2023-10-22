@@ -92,11 +92,16 @@ function reqSucess(res) {
 function reqJobs(url, option = {}) {
   try {
     //request jobs
-    axios.get(url, option).then((res) => {
-      reqSucess(res);
-      document.getElementById("loading-page").style.display = "none";
-      document.getElementById("content").style.display = "block";
-    });
+    axios
+      .get(url, option)
+      .then((res) => {
+        reqSucess(res);
+        document.getElementById("loading-page").style.display = "none";
+        document.getElementById("content").style.display = "block";
+      })
+      .catch((err) => {
+        location.href = "/login.html";
+      });
   } catch (error) {
     location.href = "/login.html";
   }
