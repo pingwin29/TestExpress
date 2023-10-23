@@ -27,7 +27,7 @@ document.getElementById("register-button").addEventListener("click", function (e
           window.location.href = `/emailc.html?email=${email}`;
         })
         .catch(function (error) {
-          alert(error.response.data.error);
+          // alert(error.response.data.error);
           console.log(error);
         });
     } else {
