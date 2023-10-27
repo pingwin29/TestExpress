@@ -5,8 +5,36 @@ const User = require("../model/User");
 
 const AllJobs = async (req, res, next) => {
   try {
-    const jobs = await Jobs.find({});
-    res.status(200).json({ jobs: jobs, jobs_length: jobs.length, user: req.user });
+    const { search, page, perPage } = req.query;
+    let startIndex, endIndex, totalPage;
+    let perPageItem = perPage || 5;
+
+    let jobs;
+    if (search) {
+      jobs = await Jobs.find({ position: { $regex: search, $options: "i" } });
+    } else {
+      jobs = await Jobs.find({});
+    }
+
+    if (page && perPage) {
+      startIndex = (page - 1) * perPage;
+      endIndex = page * perPage;
+    }
+
+    totalPage =
+      jobs.length % perPageItem == 0
+        ? parseInt(jobs.length / perPageItem)
+        : parseInt(jobs.length / perPageItem) + 1;
+
+    jobs = jobs.slice(startIndex || 0, endIndex || 5);
+
+    res.status(200).json({
+      jobs: jobs,
+      user: req.user,
+      currentPage: page || 1,
+      itemsperPage: perPageItem,
+      totalPage: totalPage,
+    });
   } catch (error) {
     next(error);
   }
@@ -82,4 +110,7 @@ const deleteJob = async (req, res, next) => {
   }
 };
 
-module.exports = { AllJobs, SingleJob, createJob, updateJob, deleteJob };
+const SearchJobs = async (req, res, next) => {
+  res.send("successful");
+};
+module.exports = { AllJobs, SingleJob, createJob, updateJob, deleteJob, SearchJobs };

@@ -101,7 +101,7 @@ const confrimRegister = async (req, res, next) => {
       );
       const type = "jwt";
       const token = user.createJWT();
-      console.log({ token });
+
       res.status(201).json({ data: confrimUser, token, type });
     }
 

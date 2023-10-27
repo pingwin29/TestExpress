@@ -63,7 +63,19 @@ header {
   justify-content: space-between;
   align-items: center;
 }
-
+.search_box {
+  width: 100%;
+}
+.search_box input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  max-width: 300px;
+  width: 100%;
+  color: #323535;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1), -1px -1px 1px rgba(0, 0, 0, 0.1);
+  outline: none;
+}
 header .left-section {
   float: left;
   color: #007bff;
@@ -148,7 +160,8 @@ body {
 /* Job list styles */
 .job-container-header {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
 }
 #job-list {
   margin: 20px 0;
@@ -178,9 +191,13 @@ body {
 }
 
 .job-status {
+  width: 100px;
   font-weight: bold;
-  color: #007bff;
-  font-size: 16px;
+  color: #fff;
+  font-size: 14px;
+  padding: 2px;
+  text-align: center;
+  border-radius: 10px;
 }
 
 .position {
@@ -234,4 +251,37 @@ footer {
   color: #1477da;
   text-align: center;
   padding: 10px 0;
+}
+
+.pagination a {
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.pagination {
+  display: block;
+  margin: 20px 0px;
+}
+
+/* Style the active/current link */
+.pagination a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+/* Add a grey background color on mouse-over */
+
+.pending {
+  background-color: #20dfcd;
+}
+
+.interview {
+  background-color: chartreuse;
+}
+
+.declined {
+  background-color: #921520;
 }

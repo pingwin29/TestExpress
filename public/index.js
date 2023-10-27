@@ -1,3 +1,9 @@
+const searchTextEle = getEleId("search");
+const jobContainer = getEleId("job-list");
+const paginationContainer = getEleId("pagination");
+const logoutBtn = getEleId("logout_btn");
+const loadingPage = getEleId("loading-page");
+const content = getEleId("content");
 //delete job fun
 function deletejobProcess(url, Element, option = {}) {
   axios
@@ -51,7 +57,6 @@ function createJobListing(jobData, CurrentUserData) {
   const { position, company, createdAt, status, userType, _id, createBy } = jobData;
   const formattedDate = createDateFormat(createdAt);
 
-  const jobContainer = document.getElementById("job-list");
   const job = document.createElement("div");
   job.classList.add("job");
   job.setAttribute("job_id", _id);
@@ -61,7 +66,7 @@ function createJobListing(jobData, CurrentUserData) {
   job.innerHTML = `
 
     <div class="job-card">
-    <div class="job-status">${status}</div>
+    <div class="job-status ${status}">${status}</div>
     <div class="position">${position}</div>
     <div class="creator-type">Posted by ${userType}</div>
     <div class="company">${company}</div>
@@ -79,13 +84,40 @@ function createJobListing(jobData, CurrentUserData) {
   jobContainer.appendChild(job);
 }
 
+function setLoading(con) {
+  console.log("loading " + con);
+  loadingPage.style.display = con ? "flex" : "none";
+  content.style.display = con ? "none" : "block";
+}
+
+function setPagination(currentPage, totalPage) {
+  const generatePage = () => {
+    let data = "";
+    for (let index = 1; index <= totalPage; index++) {
+      if (index == currentPage) {
+        data += `<a class='active' onclick="reqWithPagination(${index})">${index}</a>`;
+        continue;
+      }
+      data += `<a onclick="reqWithPagination(${index})">${index}</a>`;
+    }
+    return data;
+  };
+
+  paginationContainer.innerHTML = `
+${generatePage()}`;
+}
+
 //if req sucessfull
-function reqSucess(res) {
-  let { user, jobs } = res.data;
+function renderData(res) {
+  let { user, jobs, currentPage, totalPage } = res.data;
   document.getElementById("user_name").innerText = user.name;
-  jobs.reverse().map((job) => {
+  jobContainer.innerHTML = "";
+
+  jobs.map((job) => {
     createJobListing(job, user);
   });
+
+  setPagination(currentPage, totalPage);
 }
 
 // to req job list fun
@@ -95,9 +127,8 @@ function reqJobs(url, option = {}) {
     axios
       .get(url, option)
       .then((res) => {
-        reqSucess(res);
-        document.getElementById("loading-page").style.display = "none";
-        document.getElementById("content").style.display = "block";
+        renderData(res);
+        setLoading(false);
       })
       .catch((err) => {
         location.href = "/login.html";
@@ -107,18 +138,27 @@ function reqJobs(url, option = {}) {
   }
 }
 
+function reqWithPagination(index) {
+  setLoading(true);
+  if (type == "jwt") {
+    reqJobs(`/api/v1/jobs/jwt?page=${index}&perPage=5`, options);
+  } else {
+    reqJobs(`/api/v1/jobs/session?page=${index}&perPage=5`);
+  }
+}
+
 // main start point
 
 if (type == "jwt") {
-  reqJobs("/api/v1/jobs/jwt", options);
+  reqJobs("/api/v1/jobs/jwt?page=1&perPage=5", options);
 } else if (type == "session") {
-  reqJobs("/api/v1/jobs/session");
+  reqJobs("/api/v1/jobs/session?page=1&perPage=5");
 } else {
   location.href = "/login.html";
 }
 
 //logout btn
-document.getElementById("logout_btn").addEventListener("click", function (e) {
+logoutBtn.addEventListener("click", function (e) {
   e.preventDefault();
   if (type == "jwt") {
     localStorage.removeItem("token");
@@ -128,4 +168,17 @@ document.getElementById("logout_btn").addEventListener("click", function (e) {
     });
   }
   window.location.href = "/login.html";
+});
+
+searchTextEle.addEventListener("keydown", (event) => {
+  if (event.key == "Enter") {
+    setLoading(true);
+
+    const searchKeyWord = searchTextEle.value;
+    if (type == "jwt") {
+      reqJobs(`/api/v1/jobs/jwt?search=${searchKeyWord}`, options);
+    } else {
+      reqJobs(`/api/v1/jobs/session?search=${searchKeyWord}`);
+    }
+  }
 });
