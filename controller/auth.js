@@ -94,18 +94,21 @@ const confrimRegister = async (req, res, next) => {
       throw new BadRequest("Your email is not exist");
     }
 
-    if (code == user.veriCode) {
-      const confrimUser = await User.updateOne(
-        { email: mail },
-        { $set: { isVerified: true, veriCode: "______" } }
-      );
-      const type = "jwt";
-      const token = user.createJWT();
-
-      res.status(201).json({ data: confrimUser, token, type });
+    if (code) {
+      if (code == user.veriCode) {
+        const confrimUser = await User.updateOne(
+          { email: mail },
+          { isVerified: true, veriCode: "______" }
+        );
+        const type = "jwt";
+        const token = user.createJWT();
+        res.status(200).json({ type, token });
+      } else {
+        throw new BadRequest("please try again and sure your verification code is incorrecct");
+      }
+    } else {
+      throw new BadRequest("please check your confrim code");
     }
-
-    throw new BadRequest("please try again and sure your verification code is correcct");
   } catch (error) {
     next(error);
   }

@@ -9,6 +9,7 @@ const path = require("path");
 const session = require("express-session");
 const passport = require("passport");
 const MongoStore = require("connect-mongo");
+const cors = require("cors");
 
 //custom module
 const passwordSetup = require("./config/passport");
@@ -20,7 +21,7 @@ const passportMiddleware = require("./middleware/passport_middleware");
 // middleware
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
-
+app.use(cors());
 app.use(
   session({
     secret: "cat",

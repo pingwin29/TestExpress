@@ -5,28 +5,17 @@ const User = require("../model/User");
 
 const AllJobs = async (req, res, next) => {
   try {
-    const { search, page, perPage } = req.query;
-    let startIndex, endIndex, totalPage;
-    let perPageItem = perPage || 5;
+    const search = req.query.search || "";
+    const page = req.query.page || 1;
+    const perPageItem = req.query.perPage || 5;
 
-    let jobs;
-    if (search) {
-      jobs = await Jobs.find({ position: { $regex: search, $options: "i" } });
-    } else {
-      jobs = await Jobs.find({});
-    }
+    const totalJobs = await Jobs.count({});
+    const totalPage = Math.ceil(totalJobs / perPageItem);
 
-    if (page && perPage) {
-      startIndex = (page - 1) * perPage;
-      endIndex = page * perPage;
-    }
-
-    totalPage =
-      jobs.length % perPageItem == 0
-        ? parseInt(jobs.length / perPageItem)
-        : parseInt(jobs.length / perPageItem) + 1;
-
-    jobs = jobs.slice(startIndex || 0, endIndex || 5);
+    const jobs = await Jobs.find({ position: { $regex: search, $options: "i" } })
+      .skip((page - 1) * perPageItem)
+      .limit(perPageItem)
+      .populate("createBy");
 
     res.status(200).json({
       jobs: jobs,
@@ -55,11 +44,13 @@ const SingleJob = async (req, res, next) => {
 
 const createJob = async (req, res, next) => {
   try {
+    const userType = req.user.type == "jwt" ? "Users" : "GoogleUsers";
     const { company, position } = req.body;
+    console.log({ userType });
     const job = await Jobs.create({
       ...req.body,
       createBy: req.user.userId,
-      userType: req.user.type,
+      userType,
     });
 
     res.status(201).json({ job });

@@ -5,6 +5,11 @@ function getParams(key) {
   return searchParams.get(key);
 }
 
+function hasParams(key) {
+  const searchParams = new URLSearchParams(window.location.search);
+  return searchParams.has(key);
+}
+
 function getEleId(id) {
   return document.getElementById(id);
 }

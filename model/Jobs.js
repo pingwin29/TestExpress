@@ -1,4 +1,6 @@
 const { Schema, model, default: mongoose } = require("mongoose");
+const Users = require("./User");
+const GoogleUsers = require("./GoogleUser");
 
 const JobSchema = new Schema(
   {
@@ -18,13 +20,14 @@ const JobSchema = new Schema(
       default: "pending",
     },
     createBy: {
-      // type: mongoose.Types.ObjectId,
+      type: mongoose.Types.ObjectId,
       type: String,
       required: [true, "please Provide Creater Id"],
+      refPath: "userType",
     },
     userType: {
       type: String,
-      enum: ["jwt", "session"],
+      enum: ["Users", "GoogleUsers"],
     },
   },
   { timestamps: true }

@@ -57,18 +57,20 @@ function createJobListing(jobData, CurrentUserData) {
   const { position, company, createdAt, status, userType, _id, createBy } = jobData;
   const formattedDate = createDateFormat(createdAt);
 
+  console.log({ createBy });
+
   const job = document.createElement("div");
   job.classList.add("job");
   job.setAttribute("job_id", _id);
 
-  const owner = userId == createBy;
+  const owner = userId == createBy._id;
 
   job.innerHTML = `
 
     <div class="job-card">
     <div class="job-status ${status}">${status}</div>
     <div class="position">${position}</div>
-    <div class="creator-type">Posted by ${userType}</div>
+    <div class="creator-type">Posted by ${createBy.name}</div>
     <div class="company">${company}</div>
     <div class="buttons">
       ${
