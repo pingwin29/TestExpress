@@ -51,6 +51,7 @@ body {
   padding-top: 30px;
   position: sticky;
   top: 0;
+  z-index: 99;
 }
 .deep_container {
   margin: auto;
@@ -131,6 +132,41 @@ body {
 .filter_btn:hover {
   background: #0f675e;
 }
+.job_function_container {
+  position: absolute;
+  background: #fff;
+  right: 40px;
+  width: 150px;
+  box-shadow: 1px 2px 3px gray;
+  border-radius: 3px;
+  top: 100px;
+  opacity: 0;
+  transition: all 0.4s;
+}
+.job_function_container.active {
+  top: 25px;
+  opacity: 1;
+}
+.close_job_container {
+  align-self: flex-end;
+  margin: 0px 10px;
+  color: #ce1e2e;
+}
+.job_function_container > ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+.job_function {
+  display: flex;
+  padding: 10px 15px;
+  gap: 15px;
+  transition: all 0.4s;
+}
+.job_function:hover {
+  background: #0f675e;
+  color: #fff;
+}
 .jobs_container {
   padding: 30px 0px;
   margin: auto;
@@ -142,6 +178,7 @@ body {
   gap: 20px;
 }
 .job {
+  position: relative;
   display: flex;
   border: none;
   padding: 16px 20px;
@@ -186,6 +223,14 @@ body {
   border: 0.1px solid #20dfcd;
   background: none;
   color: #20dfcd;
+}
+.menu_btn {
+  background: none;
+  color: #323535;
+}
+
+.icon {
+  width: 50px;
 }
 
 @media screen and (max-width: 576px) {

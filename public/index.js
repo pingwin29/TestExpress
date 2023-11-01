@@ -175,7 +175,7 @@ if (type == "jwt") {
 } else if (type == "session") {
   reqJobs("/api/v1/jobs/session");
 } else {
-  // location.href = "/login.html";
+  location.href = "/login.html";
 }
 
 //logout btn
@@ -192,7 +192,7 @@ logoutBtn.addEventListener("click", function (e) {
 });
 
 profileBtn.addEventListener("click", () => {
-  window.location.href = `/profile.html?id=${profileBtn.getAttribute("id")}`;
+  window.location.href = `/profile.html?createBy=${profileBtn.getAttribute("id")}`;
 });
 
 searchTextEle.addEventListener("keydown", (event) => {

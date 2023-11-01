@@ -1,12 +1,14 @@
 const type = localStorage.getItem("type");
+const subBtn = document.getElementById("submit-btn");
 
 if (type == "jwt") {
   const token = localStorage.getItem("token");
 
-  document.getElementById("submit-btn").addEventListener("click", function (e) {
+  subBtn.addEventListener("click", function (e) {
     e.preventDefault();
     const position = document.getElementById("jobTitle").value;
     const company = document.getElementById("company").value;
+    subBtn.disabled = true;
 
     if (position && company) {
       axios
@@ -26,8 +28,10 @@ if (type == "jwt") {
     }
   });
 } else if (type == "session") {
-  document.getElementById("submit-btn").addEventListener("click", function (e) {
+  subBtn.addEventListener("click", function (e) {
     e.preventDefault();
+    subBtn.disabled = true;
+
     const position = document.getElementById("jobTitle").value;
     const company = document.getElementById("company").value;
 

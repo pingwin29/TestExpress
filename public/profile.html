@@ -11,10 +11,10 @@
     />
   </head>
   <body>
-    <!-- <section class="loading-page" id="loading-page">
+    <section class="loading-page" id="loading-page">
       <div class="loader"></div>
-    </section> -->
-    <section class="container">
+    </section>
+    <section class="container" id="content">
       <!-- //for backgrond color -->
       <div class="inner_container">
         <div class="deep_container">
@@ -22,7 +22,7 @@
           <div class="user_profile">
             <img src="./media/avator.jpg" class="user_img" srcset="" />
             <div class="user_info">
-              <h6>User Name</h6>
+              <h6 id="user_info_name">User Name</h6>
               <span>email@gmail.com</span>
             </div>
           </div>
@@ -37,10 +37,20 @@
         </div>
       </div>
 
-      <div class="jobs_container">
-        <div class="job">
+      <div class="jobs_container" id="jobs_container">
+        <!-- <div class="job">
+          <div class="job_function_container" id="job_function_container">
+            <ul>
+              <li class="close_job_container" id="close_job_container">
+                <i class="fa fa-close"></i>
+              </li>
+              <li class="job_function"><i class="fa fa-pencil-square-o icon"></i>Edit</li>
+              <li class="job_function"><i class="fa fa-trash-o icon"></i>Delete</li>
+            </ul>
+          </div>
           <div class="job_header">
             <h4>${position}</h4>
+            <button class="btn menu_btn" id="menu_btn"><i class="fa fa-ellipsis-h"></i></button>
           </div>
           <div class="job_main">
             <span><i class="fa fa-money icon"></i>:salary</span>
@@ -50,105 +60,7 @@
             <span class="declined ${status}">${status}</span>
             <button class="btn detail_btn">Detail</button>
           </div>
-        </div>
-
-        <div class="job">
-          <div class="job_header">
-            <h4>${position}</h4>
-          </div>
-          <div class="job_main">
-            <span><i class="fa fa-money icon"></i>:salary</span>
-            <span><i class="fa fa-map-marker icon"></i>:location</span>
-          </div>
-          <div class="job_footer">
-            <span class="declined ${status}">${status}</span>
-            <button class="btn detail_btn">Detail</button>
-          </div>
-        </div>
-
-        <div class="job">
-          <div class="job_header">
-            <h4>${position}</h4>
-          </div>
-          <div class="job_main">
-            <span><i class="fa fa-money icon"></i>:salary</span>
-            <span><i class="fa fa-map-marker icon"></i>:location</span>
-          </div>
-          <div class="job_footer">
-            <span class="declined ${status}">${status}</span>
-            <button class="btn detail_btn">Detail</button>
-          </div>
-        </div>
-
-        <div class="job">
-          <div class="job_header">
-            <h4>${position}</h4>
-          </div>
-          <div class="job_main">
-            <span><i class="fa fa-money icon"></i>:salary</span>
-            <span><i class="fa fa-map-marker icon"></i>:location</span>
-          </div>
-          <div class="job_footer">
-            <span class="declined ${status}">${status}</span>
-            <button class="btn detail_btn">Detail</button>
-          </div>
-        </div>
-
-        <div class="job">
-          <div class="job_header">
-            <h4>${position}</h4>
-          </div>
-          <div class="job_main">
-            <span><i class="fa fa-money icon"></i>:salary</span>
-            <span><i class="fa fa-map-marker icon"></i>:location</span>
-          </div>
-          <div class="job_footer">
-            <span class="declined ${status}">${status}</span>
-            <button class="btn detail_btn">Detail</button>
-          </div>
-        </div>
-
-        <div class="job">
-          <div class="job_header">
-            <h4>${position}</h4>
-          </div>
-          <div class="job_main">
-            <span><i class="fa fa-money icon"></i>:salary</span>
-            <span><i class="fa fa-map-marker icon"></i>:location</span>
-          </div>
-          <div class="job_footer">
-            <span class="declined ${status}">${status}</span>
-            <button class="btn detail_btn">Detail</button>
-          </div>
-        </div>
-
-        <div class="job">
-          <div class="job_header">
-            <h4>${position}</h4>
-          </div>
-          <div class="job_main">
-            <span><i class="fa fa-money icon"></i>:salary</span>
-            <span><i class="fa fa-map-marker icon"></i>:location</span>
-          </div>
-          <div class="job_footer">
-            <span class="declined ${status}">${status}</span>
-            <button class="btn detail_btn">Detail</button>
-          </div>
-        </div>
-
-        <div class="job">
-          <div class="job_header">
-            <h4>${position}</h4>
-          </div>
-          <div class="job_main">
-            <span><i class="fa fa-money icon"></i>:salary</span>
-            <span><i class="fa fa-map-marker icon"></i>:location</span>
-          </div>
-          <div class="job_footer">
-            <span class="declined ${status}">${status}</span>
-            <button class="btn detail_btn">Detail</button>
-          </div>
-        </div>
+        </div> -->
       </div>
     </section>
   </body>
