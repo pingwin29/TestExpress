@@ -7,6 +7,7 @@ const content = getEleId("content");
 const closeBtn = getEleId("close_btn");
 const openBtn = getEleId("menu_m_btn");
 const mobileMenu = getEleId("menu_container_mobile");
+const profileBtn = getEleId("profile_btn");
 
 //delete job fun
 function deletejobProcess(url, Element, option = {}) {
@@ -61,7 +62,7 @@ function createJobListing(jobData, CurrentUserData) {
   const { position, company, createdAt, status, userType, _id, createBy } = jobData;
   const formattedDate = createDateFormat(createdAt);
 
-  console.log({ createBy });
+  profileBtn.setAttribute("id", userId);
 
   const job = document.createElement("div");
   job.classList.add("job");
@@ -188,6 +189,10 @@ logoutBtn.addEventListener("click", function (e) {
     });
   }
   window.location.href = "/login.html";
+});
+
+profileBtn.addEventListener("click", () => {
+  window.location.href = `/profile.html?id=${profileBtn.getAttribute("id")}`;
 });
 
 searchTextEle.addEventListener("keydown", (event) => {

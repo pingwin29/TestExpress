@@ -8,7 +8,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="./style/index.css" />
   </head>
   <body>
     <div class="loading-page" id="loading-page">
@@ -17,7 +17,7 @@
 
     <section id="menu_container_mobile" class="menu_container_mobile">
       <div class="close_btn_container">
-        <div class="close_btn" id="close_btn"><i class="fa fa-remove"></i></div>
+        <button class="close_btn" id="close_btn"><i class="fa fa-remove"></i></button>
       </div>
       <ul class="menu_mobile">
         <li class="menu active">Jobs</li>
@@ -50,8 +50,11 @@
               <img class="user_avt" src="./media/avator.jpg" width="30" height="30" srcset="" />
             </div>
             <ul class="dropdown_item_container" id="dropdown_item_container">
-              <li class="dropdown_item"><i class="fa fa-user-o dropdown_icon"></i>Profile</li>
+              <li class="dropdown_item" id="profile_btn">
+                <i class="fa fa-user-o dropdown_icon"></i>Profile
+              </li>
               <li class="dropdown_item"><i class="fa fa-gear dropdown_icon"></i>Setting</li>
+
               <li class="dropdown_item" id="logout_btn">
                 <i class="fa fa-sign-out dropdown_icon"></i>Logout
               </li>
@@ -84,6 +87,5 @@
   <!-- <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script> -->
   <!-- <script src="./helper/check_user_type.mjs" type="module"></script> -->
   <script src="./helper/check_user_type.mjs"></script>
-  <script src="./index.js"></script>
   <script src="./index.js"></script>
 </html>

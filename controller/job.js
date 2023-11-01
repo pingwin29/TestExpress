@@ -10,10 +10,15 @@ const AllJobs = async (req, res, next) => {
 
     const totalJobs = await Jobs.count({});
     const perPageItem = req.query.perPage || totalJobs;
+    const createBy = req.query.userId || "";
+
+    // const findOption = ;
 
     const totalPage = Math.ceil(totalJobs / perPageItem);
 
-    const jobs = await Jobs.find({ position: { $regex: search, $options: "i" } })
+    const jobs = await Jobs.find({
+      position: { $regex: search, $options: "i" },
+    })
       .skip((page - 1) * perPageItem)
       .limit(perPageItem)
       .populate("createBy");
