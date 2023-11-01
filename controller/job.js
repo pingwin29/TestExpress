@@ -7,9 +7,10 @@ const AllJobs = async (req, res, next) => {
   try {
     const search = req.query.search || "";
     const page = req.query.page || 1;
-    const perPageItem = req.query.perPage || 5;
 
     const totalJobs = await Jobs.count({});
+    const perPageItem = req.query.perPage || totalJobs;
+
     const totalPage = Math.ceil(totalJobs / perPageItem);
 
     const jobs = await Jobs.find({ position: { $regex: search, $options: "i" } })

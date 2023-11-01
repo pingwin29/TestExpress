@@ -3,55 +3,87 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Job Listings</title>
-    <link rel="stylesheet" href="index.css" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="./index.css" />
   </head>
   <body>
     <div class="loading-page" id="loading-page">
       <div class="loader"></div>
     </div>
-    <div class="content" id="content">
-      <!-- Your content goes here -->
 
-      <header>
-        <div class="container">
-          <div class="left-section">
-            <h1>Job Listings</h1>
-          </div>
-          <div class="right-section">
-            <div class="user-info">
-              <div class="user-icon">U</div>
-              <span id="user_name">User Name</span>
-            </div>
-            <button id="logout_btn" class="logout-button">Logout</button>
+    <section id="menu_container_mobile" class="menu_container_mobile">
+      <div class="close_btn_container">
+        <div class="close_btn" id="close_btn"><i class="fa fa-remove"></i></div>
+      </div>
+      <ul class="menu_mobile">
+        <li class="menu active">Jobs</li>
+        <li class="menu">Posts</li>
+        <li class="menu">Guide</li>
+      </ul>
+    </section>
 
-            <!-- Add a responsive menu icon for smaller screens -->
-          </div>
-        </div>
+    <section id="content">
+      <header class="header">
+        <img loading="lazy" class="logo" src="./media/logo.svg" />
       </header>
 
-      <main class="container">
-        <div class="job-container-header">
-          <div class="search_box">
-            <input type="text" required class="" id="search" placeholder="Search Jobs...." />
+      <div class="helper_div">
+        <nav>
+          <div class="menu_container_mobile_btn">
+            <button class="btn" id="menu_m_btn"><i class="fa fa-navicon"></i></button>
           </div>
-          <a href="/createjob.html" class="create-button">create</a>
-        </div>
-        <div id="job-list">
-          <!-- Job listings will be displayed here -->
-        </div>
+          <ul class="menu_container">
+            <li class="menu acitve">Jobs</li>
+            <li class="menu">Posts</li>
+            <li class="menu">Guide</li>
+          </ul>
+          <div class="dropdown" id="dropdown">
+            <div class="user_avt_container">
+              <h3 class="user_name">
+                <i class="fa fa-chevron-down dropdown_icon"></i
+                ><span id="user_name">User Name</span>
+              </h3>
+              <img class="user_avt" src="./media/avator.jpg" width="30" height="30" srcset="" />
+            </div>
+            <ul class="dropdown_item_container" id="dropdown_item_container">
+              <li class="dropdown_item"><i class="fa fa-user-o dropdown_icon"></i>Profile</li>
+              <li class="dropdown_item"><i class="fa fa-gear dropdown_icon"></i>Setting</li>
+              <li class="dropdown_item" id="logout_btn">
+                <i class="fa fa-sign-out dropdown_icon"></i>Logout
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
 
-        <div class="pagination" id="pagination"></div>
+      <main>
+        <div class="main_header">
+          <input
+            placeholder="Search Jobs ..."
+            id="search"
+            type="text"
+            class="search_box"
+            name=""
+            id=""
+          />
+          <button class="btn filter_btn"><i class="fa fa-sliders"></i></button>
+        </div>
+        <div class="jobs_container" id="job-list"></div>
       </main>
 
-      <footer>
-        <div class="container">&copy; 2023 Job Listings</div>
-      </footer>
-    </div>
+      <a href="/createjob.html" class="round_btn a_link"><i class="fa fa-plus"></i></a>
+      <footer></footer>
+    </section>
   </body>
+  <!-- <script src="./helper/check_user_type.mjs"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <!-- <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script> -->
   <!-- <script src="./helper/check_user_type.mjs" type="module"></script> -->
   <script src="./helper/check_user_type.mjs"></script>
+  <script src="./index.js"></script>
   <script src="./index.js"></script>
 </html>
