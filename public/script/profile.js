@@ -5,6 +5,11 @@ const loadingPage = getEleId("loading-page");
 const content = getEleId("content");
 const menuBtn = getEleId("menu_btn");
 var closeMenuBtn = getEleId("close_job_container");
+const filterOBtn = getEleId("filter_option_btn");
+const filterOpenBtn = getEleId("filter_open_box_btn");
+const filterBoxContainer = getEleId("filter_box_conatainer");
+const filterCloseBtn = getEleId("filter_close_box_btn");
+const filterForm = getEleId("filter_box_conatainer");
 backBtn.addEventListener("click", () => {
   window.location.href = "/";
 });
@@ -20,6 +25,7 @@ function setLoading(con) {
   console.log("loading " + con);
   loadingPage.style.display = con ? "flex" : "none";
   content.style.display = con ? "none" : "block";
+  return;
 }
 
 function createDateFormat(jobcreateDate) {
@@ -78,7 +84,7 @@ function createJobListing(jobData, CurrentUserData) {
 function renderData(res) {
   let { user, jobs, currentPage, totalPage } = res.data;
   userNameEle.innerText = user.name;
-  //   jobContainer.innerHTML = "";
+  jobContainer.innerHTML = "";
 
   jobs.map((job) => {
     createJobListing(job, user);
@@ -93,6 +99,7 @@ function reqJobs(url, option = {}) {
     axios
       .get(url, option)
       .then((res) => {
+        setLoading(true);
         renderData(res);
         setLoading(false);
       })
@@ -106,11 +113,16 @@ function reqJobs(url, option = {}) {
   }
 }
 
+function filterHandler() {
+  alert("submit");
+}
+
 if (hasParams("createBy")) {
   var createBy = getParams("createBy");
 } else {
   location.href = "/";
 }
+
 if (type == "jwt") {
   reqJobs(`/api/v1/jobs/jwt?createBy=${createBy}`, options);
 } else if (type == "session") {
@@ -118,3 +130,47 @@ if (type == "jwt") {
 } else {
   location.href = "/login.html";
 }
+
+function getOptionValue(options) {
+  let value;
+  for (var option of options) {
+    if (option.checked == true) {
+      value = option.value;
+      break;
+    }
+  }
+  return value;
+}
+
+filterOBtn.addEventListener("click", () => {
+  const orderOptions = document.getElementsByName("order");
+  const sortOptions = document.getElementsByName("sort");
+
+  let sort = { orderName: null, sortName: null };
+
+  const orderValue = getOptionValue(orderOptions);
+  const sortValue = getOptionValue(sortOptions);
+
+  console.log({ orderValue, sortValue });
+
+  setLoading(true);
+  if (type == "jwt") {
+    reqJobs(
+      `/api/v1/jobs/jwt?createBy=${createBy}&sortBy=${sortValue}&orderBy=${orderValue}`,
+      options
+    );
+  } else if (type == "session") {
+    reqJobs(`/api/v1/jobs/session?createBy=${createBy}&sortBy=${sortValue}&orderBy=${orderValue}`);
+  } else {
+    location.href = "/login.html";
+  }
+  filterBoxContainer.classList.remove("active");
+});
+
+filterOpenBtn.addEventListener("click", () => {
+  filterBoxContainer.classList.add("active");
+});
+
+filterCloseBtn.addEventListener("click", () => {
+  filterBoxContainer.classList.remove("active");
+});

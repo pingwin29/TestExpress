@@ -15,6 +15,7 @@
       <div class="loader"></div>
     </div>
 
+    <!-- for mobile menu  -->
     <section id="menu_container_mobile" class="menu_container_mobile">
       <div class="close_btn_container">
         <button class="close_btn" id="close_btn"><i class="fa fa-remove"></i></button>
@@ -27,10 +28,57 @@
     </section>
 
     <section id="content">
+      <!-- filter box show up  -->
+      <div class="filter_box_conatainer" id="filter_box_conatainer">
+        <div class="filter_box_header">
+          <p class="title">Filter</p>
+          <button class="btn" id="filter_close_box_btn"><i class="fa fa-close"></i></button>
+        </div>
+        <div class="filter_box_main">
+          <div class="filter_box">
+            <h5 class="filter_name">Sort By</h5>
+            <div class="filter_options">
+              <div class="filter_option">
+                <input type="radio" name="sort" value="createdAt" checked id="createDate" />
+                <label for="createDate">createDate</label>
+              </div>
+              <div class="filter_option">
+                <input type="radio" name="sort" value="position" id="position" />
+                <label for="position">Position</label>
+              </div>
+              <div class="filter_option">
+                <input type="radio" name="sort" value="updatedAt" id="updateDate" />
+                <label for="updateDate">updateDate</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter_box">
+            <h5 class="filter_name">Order By</h5>
+            <div class="filter_options">
+              <div class="filter_option">
+                <input type="radio" name="order" value="1" id="sc" />
+                <label for="sc">Sc</label>
+              </div>
+              <div class="filter_option">
+                <input type="radio" name="order" value="-1" checked id="desc" />
+                <label for="desc">Desc</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="filter_box_footer">
+          <button class="btn cancel_btn" type="submit">cancel</button>
+          <button class="btn filter_btn" id="filter_option_btn">Filter</button>
+        </div>
+      </div>
+
+      <!-- page header logo  -->
       <header class="header">
         <img loading="lazy" class="logo" src="./media/logo.svg" />
       </header>
 
+      <!-- nav header  -->
       <div class="helper_div">
         <nav>
           <div class="menu_container_mobile_btn">
@@ -63,6 +111,7 @@
         </nav>
       </div>
 
+      <!-- page main  -->
       <main>
         <div class="main_header">
           <input
@@ -73,7 +122,9 @@
             name=""
             id=""
           />
-          <button class="btn filter_btn"><i class="fa fa-sliders"></i></button>
+          <button class="btn filter_btn" id="filter_open_box_btn">
+            <i class="fa fa-sliders"></i>
+          </button>
         </div>
         <div class="jobs_container" id="job-list"></div>
       </main>

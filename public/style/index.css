@@ -333,6 +333,81 @@ footer {
   color: #323535;
 }
 
+/* filter box  */
+.filter_box_conatainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+
+  border-radius: 5px;
+
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+
+  background: #fff;
+  width: 500px;
+  padding: 20px;
+
+  width: 0%;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 1s;
+}
+.filter_box_conatainer.active {
+  width: 500px;
+  opacity: 1;
+  display: flex;
+}
+.filter_box_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.filter_box_header .title {
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+.filter_box_header button {
+  background: none;
+  font-size: 1.1rem;
+}
+.filter_box_main {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.filter_box {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-direction: column;
+}
+.filter_name {
+  max-width: 150px;
+}
+.filter_options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.filter_option {
+  padding: 5px 15px;
+  border-radius: 10px;
+  border: 1px solid #323535;
+}
+.filter_box_footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+/* filter box  */
+
 /* for mobile  */
 @media screen and (max-width: 576px) {
   nav {

@@ -11,6 +11,12 @@ const AllJobs = async (req, res, next) => {
     const totalJobs = await Jobs.count({});
     const perPageItem = req.query.perPage || totalJobs;
     const createBy = req.query.createBy || "";
+    const sortBy = req.query.sortBy || "createdAt";
+    const orderBy = req.query.orderBy || -1;
+
+    let sort = {};
+
+    sort[sortBy] = orderBy;
 
     let findOption = {
       position: { $regex: search, $options: "i" },
@@ -23,6 +29,7 @@ const AllJobs = async (req, res, next) => {
     const totalPage = Math.ceil(totalJobs / perPageItem);
 
     const jobs = await Jobs.find(findOption)
+      .sort(sort)
       .skip((page - 1) * perPageItem)
       .limit(perPageItem)
       .populate("createBy");

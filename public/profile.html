@@ -16,6 +16,51 @@
     </section>
     <section class="container" id="content">
       <!-- //for backgrond color -->
+      <!-- filter box  -->
+      <div class="filter_box_conatainer" id="filter_box_conatainer">
+        <div class="filter_box_header">
+          <p class="title">Filter</p>
+          <button class="btn" id="filter_close_box_btn"><i class="fa fa-close"></i></button>
+        </div>
+        <div class="filter_box_main">
+          <div class="filter_box">
+            <h5 class="filter_name">Sort By</h5>
+            <div class="filter_options">
+              <div class="filter_option">
+                <input type="radio" name="sort" value="createdAt" checked id="createDate" />
+                <label for="createDate">createDate</label>
+              </div>
+              <div class="filter_option">
+                <input type="radio" name="sort" value="position" id="position" />
+                <label for="position">Position</label>
+              </div>
+              <div class="filter_option">
+                <input type="radio" name="sort" value="updatedAt" id="updateDate" />
+                <label for="updateDate">updateDate</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter_box">
+            <h5 class="filter_name">Order By</h5>
+            <div class="filter_options">
+              <div class="filter_option">
+                <input type="radio" name="order" value="1" id="sc" />
+                <label for="sc">Sc</label>
+              </div>
+              <div class="filter_option">
+                <input type="radio" name="order" value="-1" checked id="desc" />
+                <label for="desc">Desc</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="filter_box_footer">
+          <button class="btn cancel_btn" type="submit">cancel</button>
+          <button class="btn filter_btn" id="filter_option_btn">Filter</button>
+        </div>
+      </div>
+
       <div class="inner_container">
         <div class="deep_container">
           <button class="btn back_btn" id="back_btn"><i class="fa fa-arrow-left"></i></button>
@@ -32,36 +77,13 @@
               <li class="menu_item">Posts</li>
               <!-- <li class="menu_item">hello</li> -->
             </ul>
-            <button class="btn filter_btn"><i class="fa fa-sliders"></i></button>
+            <button class="btn filter_btn" id="filter_open_box_btn">
+              <i class="fa fa-sliders"></i>
+            </button>
           </div>
         </div>
       </div>
-
-      <div class="jobs_container" id="jobs_container">
-        <!-- <div class="job">
-          <div class="job_function_container" id="job_function_container">
-            <ul>
-              <li class="close_job_container" id="close_job_container">
-                <i class="fa fa-close"></i>
-              </li>
-              <li class="job_function"><i class="fa fa-pencil-square-o icon"></i>Edit</li>
-              <li class="job_function"><i class="fa fa-trash-o icon"></i>Delete</li>
-            </ul>
-          </div>
-          <div class="job_header">
-            <h4>${position}</h4>
-            <button class="btn menu_btn" id="menu_btn"><i class="fa fa-ellipsis-h"></i></button>
-          </div>
-          <div class="job_main">
-            <span><i class="fa fa-money icon"></i>:salary</span>
-            <span><i class="fa fa-map-marker icon"></i>:location</span>
-          </div>
-          <div class="job_footer">
-            <span class="declined ${status}">${status}</span>
-            <button class="btn detail_btn">Detail</button>
-          </div>
-        </div> -->
-      </div>
+      <div class="jobs_container" id="jobs_container"></div>
     </section>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>

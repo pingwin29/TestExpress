@@ -9,6 +9,11 @@ const openBtn = getEleId("menu_m_btn");
 const mobileMenu = getEleId("menu_container_mobile");
 const profileBtn = getEleId("profile_btn");
 
+const filterOBtn = getEleId("filter_option_btn");
+const filterOpenBtn = getEleId("filter_open_box_btn");
+const filterBoxContainer = getEleId("filter_box_conatainer");
+const filterCloseBtn = getEleId("filter_close_box_btn");
+
 //delete job fun
 function deletejobProcess(url, Element, option = {}) {
   axios
@@ -146,6 +151,7 @@ function reqJobs(url, option = {}) {
     axios
       .get(url, option)
       .then((res) => {
+        console.log({ res });
         renderData(res);
         setLoading(false);
       })
@@ -220,4 +226,45 @@ closeBtn.addEventListener("click", () => {
 openBtn.addEventListener("click", () => {
   mobileMenu.classList.toggle("active");
   content.classList.toggle("active");
+});
+
+function getOptionValue(options) {
+  let value;
+  for (var option of options) {
+    if (option.checked == true) {
+      value = option.value;
+      break;
+    }
+  }
+  return value;
+}
+
+filterOBtn.addEventListener("click", () => {
+  const orderOptions = document.getElementsByName("order");
+  const sortOptions = document.getElementsByName("sort");
+
+  let sort = { orderName: null, sortName: null };
+
+  const orderValue = getOptionValue(orderOptions);
+  const sortValue = getOptionValue(sortOptions);
+
+  console.log({ orderValue, sortValue });
+
+  setLoading(true);
+  if (type == "jwt") {
+    reqJobs(`/api/v1/jobs/jwt?sortBy=${sortValue}&orderBy=${orderValue}`, options);
+  } else if (type == "session") {
+    reqJobs(`/api/v1/jobs/session?sortBy=${sortValue}&orderBy=${orderValue}`);
+  } else {
+    location.href = "/login.html";
+  }
+  filterBoxContainer.classList.remove("active");
+});
+
+filterOpenBtn.addEventListener("click", () => {
+  filterBoxContainer.classList.toggle("active");
+});
+
+filterCloseBtn.addEventListener("click", () => {
+  filterBoxContainer.classList.remove("active");
 });
