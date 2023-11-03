@@ -302,9 +302,7 @@ body {
   accent-color: #20dfcd;
   border-color: #20dfcd;
 }
-input[type="radio"]:checked ~ div.filter_option {
-  border-color: #20dfcd;
-}
+
 .filter_box_footer {
   display: flex;
   justify-content: flex-end;

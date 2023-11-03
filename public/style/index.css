@@ -427,6 +427,27 @@ footer {
   .search_box {
     /* min-width: 240px; */
   }
+
+  .filter_box_conatainer.active {
+    width: 100%;
+    top: 100%;
+    left: 0;
+    /* transform: translateY(-100%); */
+    opacity: 1;
+    display: flex;
+    height: auto;
+    animation: widthAnimation 1s forwards;
+    overflow: hidden;
+  }
+
+  @keyframes widthAnimation {
+    0% {
+      transform: translateY(-0%);
+    }
+    100% {
+      transform: translateY(-100%);
+    }
+  }
 }
 
 /* for tablet  */
