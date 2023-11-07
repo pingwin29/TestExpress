@@ -97,6 +97,25 @@ body {
   flex-direction: column;
   gap: 10px;
 }
+.profile {
+  position: relative;
+}
+.user_profile a {
+  line-height: 30px;
+  text-align: center;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  background: #323535;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: #fff;
+  transition: all 0.4s;
+}
+.user_profile a:hover {
+  background: #20dfcd;
+}
 .user_info h6 {
   font-size: 1.3rem;
 }

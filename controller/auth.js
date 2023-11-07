@@ -1,11 +1,9 @@
 const jwt = require("jsonwebtoken");
 const User = require("../model/User");
 const bcrypt = require("bcryptjs");
-const { statusCode } = require("http-status-codes");
 const nodemailer = require("nodemailer");
 
 const BadRequest = require("../error/bad-request");
-const CustomAPIError = require("../error/custom-error-api");
 const Unauthorized = require("../error/unauthorized");
 
 const login = async (req, res, next) => {

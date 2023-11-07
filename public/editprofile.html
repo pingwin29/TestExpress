@@ -1,0 +1,188 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="form">
+      <input type="file" id="file" name="image" />
+      <button type="submit" id="s">Send</button>
+    </form>
+
+    <img src="/image/6544d24c00f0a795a162d92d" id="image" alt="Image" />
+  </body>
+
+  <script>
+    document.getElementById("s").addEventListener("click", (e) => {
+      e.preventDefault();
+      const form = document.getElementById("file");
+      const image = document.getElementById("image");
+      const file = form.files[0];
+
+      const formData = new FormData();
+      formData.append("image", file);
+
+      //   const formData = { image: file };
+
+      console.log({ formData });
+
+      axios
+        .post("/upload", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((res) => {
+          console.log(res);
+          image.src = "/image/" + res.data.imageData;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    });
+  </script>
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="./editprofile.css" />
+  </head>
+  <body>
+    <div class="profile-edit-container">
+      <div class="profile-edit-header">
+        <h1>Edit Profile</h1>
+      </div>
+      <form id="profile-edit-form" enctype="multipart/form-data">
+        <div class="avatar">
+          <img id="avatar-preview" src="./media/avator.jpg" alt="User Avatar" />
+          <input type="file" id="avatar-input" accept="image/*" />
+
+          <label for="avatar-input" class="change-avatar-button">Change Avatar</label>
+        </div>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your Name" required />
+        </div>
+        <button type="submit" id="submit">Save Changes</button>
+      </form>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <script src="./helper/check_user_type.mjs"></script>
+  <script>
+    const form = document.getElementById("profile-edit-form");
+    const img = getEleId("avatar-preview");
+    const file = getEleId("avatar-input");
+    const submitBtn = document.getElementById("submit");
+
+    const id = getParams("id");
+
+    // if (type == "jwt") {
+    //   axios
+    //     .get(`/api/v1/jwt/users/${id}`, options)
+    //     .then((res) => {
+    //       getEleId("name").value = res.data.user.name;
+    //     })
+    //     .catch((err) => {
+    //       console.log({ err });
+    //     });
+    // } else if (type == "sessions") {
+    //   axios
+    //     .get(`/api/v1/sessions/users/${id}`)
+    //     .then((res) => console.log({ res }))
+    //     .catch((err) => {
+    //       console.log({ err });
+    //     });
+    // }
+
+    document.getElementById("profile-edit-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const formData = new FormData(this);
+
+      for (data of formData) {
+        console.log(data);
+      }
+
+      axios
+        .patch(`/api/v1/jwt/users`, JSON.stringify(formData))
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    });
+  </script>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./editprofile.css" />
+  </head>
+  <body>
+    <form enctype="multipart/form-data" id="form" class="profile-edit-container">
+      <div class="profile-edit-header">
+        <h1>Edit Profiile</h1>
+      </div>
+      <div class="avatar form-group">
+        <img alt="" id="avatar_img" />
+        <input type="file" name="avatar" id="avatar" style="display: none" />
+        <label for="avatar" class="change-avatar-button">Change Avatar</label>
+      </div>
+
+      <div class="form-group">
+        <input type="text" name="name" id="name" />
+      </div>
+
+      <div class="form-group">
+        <button class="btn" onclick="backHandler()">Back</button>
+
+        <button type="submit" id="submit" disabled>submit</button>
+      </div>
+    </form>
+  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <script src="./helper/check_user_type.mjs"></script>
+  <script>
+    axios.get(`/api/v1/jwt/users/${getParams("id")}`, options).then((res) => {
+      getEleId("name").value = res.data.user.name;
+      getEleId("submit").disabled = false;
+    });
+
+    const backHandler = () => {
+      location.href = `/profile.html?createBy=${getParams("id")}`;
+    };
+
+    getEleId("avatar_img").src = `/img/${getParams("id")}`;
+
+    document.getElementById("form").addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(document.getElementById("form"));
+
+      axios
+        .patch(`/api/v1/jwt/users/1232`, formData, options)
+        .then((res) => {
+          const token = res.data.token;
+          localStorage.setItem("token", token);
+        })
+        .catch((err) => {
+          console.log({ err });
+        });
+    });
+  </script>
+</html>

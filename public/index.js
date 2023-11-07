@@ -69,11 +69,13 @@ function createJobListing(jobData, CurrentUserData) {
 
   profileBtn.setAttribute("id", userId);
 
+  getEleId("profile_img").src = `/img/${userId}`;
+
   const job = document.createElement("div");
   job.classList.add("job");
   job.setAttribute("job_id", _id);
 
-  const owner = userId == createBy._id;
+  // const owner = userId == createBy._id;
 
   job.innerHTML = `
 
@@ -135,6 +137,7 @@ function setLoading(con) {
 function renderData(res) {
   let { user, jobs, currentPage, totalPage } = res.data;
   document.getElementById("user_name").innerText = user.name;
+
   jobContainer.innerHTML = "";
 
   jobs.map((job) => {

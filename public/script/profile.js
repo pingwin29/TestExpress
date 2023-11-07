@@ -10,6 +10,7 @@ const filterOpenBtn = getEleId("filter_open_box_btn");
 const filterBoxContainer = getEleId("filter_box_conatainer");
 const filterCloseBtn = getEleId("filter_close_box_btn");
 const filterForm = getEleId("filter_box_conatainer");
+const eidtBtn = getEleId("edit_btn");
 backBtn.addEventListener("click", () => {
   window.location.href = "/";
 });
@@ -123,6 +124,8 @@ if (hasParams("createBy")) {
   location.href = "/";
 }
 
+getEleId("user_img").src = `/img/${createBy}`;
+
 if (type == "jwt") {
   reqJobs(`/api/v1/jobs/jwt?createBy=${createBy}`, options);
 } else if (type == "session") {
@@ -173,4 +176,9 @@ filterOpenBtn.addEventListener("click", () => {
 
 filterCloseBtn.addEventListener("click", () => {
   filterBoxContainer.classList.remove("active");
+});
+
+eidtBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  location.href = `/editprofile.html?id=${createBy}`;
 });

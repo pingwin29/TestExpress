@@ -2,6 +2,7 @@ require("dotenv").config();
 //router
 const JobRouter = require("./router/job");
 const authRouter = require("./router/auth");
+const UserRouter = require("./router/user");
 //thirdpirty
 const express = require("express");
 const app = express();
@@ -11,14 +12,19 @@ const passport = require("passport");
 const MongoStore = require("connect-mongo");
 const cors = require("cors");
 
+const bodyParser = require("body-parser");
+// const upload = multer({ dest: "uploads/" });
+
 //custom module
 const passwordSetup = require("./config/passport");
 const connectDB = require("./db/connect");
 const notFoundMiddleware = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");
-const authorizationMiddleware = require("./middleware/auth");
+const authorizationMiddleware = require("./middleware//auth");
 const passportMiddleware = require("./middleware/passport_middleware");
+const User = require("./model/User");
 // middleware
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cors());
@@ -35,6 +41,18 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //routes
+
+app.get("/img/:id", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const buffer = await User.findById(id).select("profileData");
+    res.send(buffer.profileData);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+});
+app.use("/api/v1/session/users", passportMiddleware, UserRouter);
+app.use("/api/v1/jwt/users", authorizationMiddleware, UserRouter);
 app.use("/api/v1/jobs/session", passportMiddleware, JobRouter);
 app.use("/api/v1/jobs/jwt", authorizationMiddleware, JobRouter);
 app.use("/api/v1/auth", authRouter);

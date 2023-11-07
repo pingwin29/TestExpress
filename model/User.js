@@ -25,6 +25,7 @@ const UserSchema = new mongoose.Schema({
   },
   isVerified: { type: Boolean, default: false },
   veriCode: { type: String, required: [true, "please Provide verification Code"] },
+  profileData: { type: Buffer, default: "" },
 });
 
 UserSchema.pre("save", async function (next) {
