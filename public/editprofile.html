@@ -143,7 +143,7 @@
       </div>
 
       <div class="form-group">
-        <input type="text" name="name" id="name" />
+        <input type="text" name="name" id="name" readonly />
       </div>
 
       <div class="form-group">
@@ -160,6 +160,7 @@
   <script>
     axios.get(`/api/v1/jwt/users/${getParams("id")}`, options).then((res) => {
       getEleId("name").value = res.data.user.name;
+      getEleId("name").readOnly = false;
       getEleId("submit").disabled = false;
     });
 
