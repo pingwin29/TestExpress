@@ -29,11 +29,17 @@ const signleUser = async (req, res, next) => {
 };
 const updateUser = async (req, res, next) => {
   try {
-    const user = await User.findByIdAndUpdate(req.user.userId, {
-      name: req.body.name,
-      profileData: req.file.buffer,
-    });
-
+    let user;
+    if (req.file) {
+      user = await User.findByIdAndUpdate(req.user.userId, {
+        name: req.body.name,
+        profileData: req.file.buffer,
+      });
+    } else {
+      user = await User.findByIdAndUpdate(req.user.userId, {
+        name: req.body.name,
+      });
+    }
     const token = user.createJWT();
     res.status(201).json({ token });
   } catch (error) {
