@@ -84,6 +84,7 @@ function createJobListing(jobData, CurrentUserData) {
 
 function renderData(res) {
   let { user, jobs, currentPage, totalPage } = res.data;
+  console.log({ res });
   userNameEle.innerText = user.name;
   jobContainer.innerHTML = "";
 

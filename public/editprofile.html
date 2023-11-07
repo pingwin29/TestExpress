@@ -169,6 +169,19 @@
 
     getEleId("avatar_img").src = `/img/${getParams("id")}`;
 
+    getEleId("avatar").addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+
+      reader.addEventListener("load", () => {
+        getEleId("avatar_img").src = reader.result;
+      });
+
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    });
+
     document.getElementById("form").addEventListener("submit", (e) => {
       e.preventDefault();
 
