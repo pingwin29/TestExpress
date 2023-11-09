@@ -147,12 +147,12 @@ function reqJobs(url, option = {}) {
         setLoading(false);
       })
       .catch((err) => {
-        // location.href = "/login.html";
+        location.href = "/login.html";
         console.log(err);
       });
   } catch (error) {
     console.log(error);
-    // location.href = "/login.html";
+    location.href = "/login.html";
   }
 }
 
