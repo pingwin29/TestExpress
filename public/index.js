@@ -96,19 +96,6 @@ function createJobListing(jobData, CurrentUserData) {
   jobContainer.appendChild(job);
 }
 
-// <div class="job-card">
-//   <div class="job-status ${status}">${status}</div>
-//   <div class="position">${position}</div>
-//   <div class="creator-type">Posted by ${createBy.name}</div>
-//   <div class="company">${company}</div>
-//   <div class="buttons">
-//     $
-//     {owner
-//       ? "<button class='button edit-button' id='edit-btn' onclick='editHandler(event)'>Edit</button><button class='button delete-button' id = 'delete-btn' onclick = 'deleteHandler(event)' > Delete</ > "
-//       : "<button class='button edit-button' id='edit-btn' onclick=''>Apply</button>"}
-//   </div>
-// </div>;
-
 function setLoading(con) {
   console.log("loading " + con);
   loadingPage.style.display = con ? "flex" : "none";
@@ -140,6 +127,7 @@ function renderData(res) {
 
   jobContainer.innerHTML = "";
 
+  console.log({ user });
   jobs.map((job) => {
     createJobListing(job, user);
   });
@@ -159,12 +147,12 @@ function reqJobs(url, option = {}) {
         setLoading(false);
       })
       .catch((err) => {
-        location.href = "/login.html";
+        // location.href = "/login.html";
         console.log(err);
       });
   } catch (error) {
     console.log(error);
-    location.href = "/login.html";
+    // location.href = "/login.html";
   }
 }
 
@@ -178,14 +166,7 @@ function reqWithPagination(index) {
 }
 
 // main start point
-
-if (type == "jwt") {
-  reqJobs("/api/v1/jobs/jwt", options);
-} else if (type == "session") {
-  reqJobs("/api/v1/jobs/session");
-} else {
-  location.href = "/login.html";
-}
+reqJobs(`/api/v1/jobs`, options);
 
 //logout btn
 logoutBtn.addEventListener("click", function (e) {
@@ -209,11 +190,7 @@ searchTextEle.addEventListener("keydown", (event) => {
     setLoading(true);
 
     const searchKeyWord = searchTextEle.value;
-    if (type == "jwt") {
-      reqJobs(`/api/v1/jobs/jwt?search=${searchKeyWord}`, options);
-    } else {
-      reqJobs(`/api/v1/jobs/session?search=${searchKeyWord}`);
-    }
+    reqJobs(`/api/v1/jobs?search=${searchKeyWord}`, options);
   }
 });
 
@@ -254,13 +231,8 @@ filterOBtn.addEventListener("click", () => {
   console.log({ orderValue, sortValue });
 
   setLoading(true);
-  if (type == "jwt") {
-    reqJobs(`/api/v1/jobs/jwt?sortBy=${sortValue}&orderBy=${orderValue}`, options);
-  } else if (type == "session") {
-    reqJobs(`/api/v1/jobs/session?sortBy=${sortValue}&orderBy=${orderValue}`);
-  } else {
-    location.href = "/login.html";
-  }
+
+  reqJobs(`/api/v1/jobs?sortBy=${sortValue}&orderBy=${orderValue}`, options);
   filterBoxContainer.classList.remove("active");
 });
 

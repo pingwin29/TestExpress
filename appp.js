@@ -22,7 +22,9 @@ const notFoundMiddleware = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");
 const authorizationMiddleware = require("./middleware//auth");
 const passportMiddleware = require("./middleware/passport_middleware");
+const authMiddleware = require("./middleware//authorization");
 const User = require("./model/User");
+const test = require("./model/test");
 // middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
@@ -51,10 +53,18 @@ app.get("/img/:id", async (req, res, next) => {
     res.status(400).send(error);
   }
 });
-app.use("/api/v1/session/users", passportMiddleware, UserRouter);
-app.use("/api/v1/jwt/users", authorizationMiddleware, UserRouter);
-app.use("/api/v1/jobs/session", passportMiddleware, JobRouter);
-app.use("/api/v1/jobs/jwt", authorizationMiddleware, JobRouter);
+
+app.post("/test", async (req, res) => {
+  try {
+    const user = await test.create(req.body);
+    res.send(user);
+  } catch (error) {
+    res.send(error);
+  }
+});
+
+app.use("/api/v1/jobs", authMiddleware, JobRouter);
+app.use("/api/v1/users", authMiddleware, UserRouter);
 app.use("/api/v1/auth", authRouter);
 
 app.use(notFoundMiddleware);

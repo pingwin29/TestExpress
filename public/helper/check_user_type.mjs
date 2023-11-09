@@ -1,4 +1,5 @@
-var type, options;
+var type,
+  options = {};
 
 function getParams(key) {
   const searchParams = new URLSearchParams(window.location.search);

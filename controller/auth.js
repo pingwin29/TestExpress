@@ -123,7 +123,11 @@ const register = async (req, res, next) => {
     const msg = "Your login Verification Code is";
     const veriCode = await sendMailCode(email, msg);
 
-    const user = await User.create({ ...req.body, veriCode });
+    const user = await User.create({
+      ...req.body,
+      veriCode,
+      userType: "email",
+    });
 
     res.status(201).send({ name: user.name, email: user.email });
   } catch (err) {

@@ -11,7 +11,6 @@ const UserSchema = new mongoose.Schema({
   email: {
     type: "string",
     required: true,
-    unique: true,
     trim: true,
     lowercase: true,
     validate: {
@@ -21,8 +20,9 @@ const UserSchema = new mongoose.Schema({
   },
   password: {
     type: "string",
-    required: [true, "Password is required"],
+    // required: [true, "Password is required"],
   },
+  userType: { type: String, enum: ["email", "google"] },
   isVerified: { type: Boolean, default: false },
   veriCode: { type: String, required: [true, "please Provide verification Code"] },
   profileData: { type: Buffer, default: "" },
@@ -44,5 +44,7 @@ UserSchema.methods.createJWT = function () {
   console.log(this.name);
   return jwt.sign({ userId: this._id, name: this.name }, process.env.JWTTOKEN);
 };
+
+UserSchema.index({ email: 1, userType: 1 }, { unique: true });
 
 module.exports = mongoose.model("Users", UserSchema);

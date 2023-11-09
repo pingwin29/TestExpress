@@ -54,6 +54,7 @@ const SingleJob = async (req, res, next) => {
 const createJob = async (req, res, next) => {
   try {
     const userType = req.user.type == "jwt" ? "Users" : "GoogleUsers";
+    console.log({ req });
     const { company, position } = req.body;
     console.log({ userType });
     const job = await Jobs.create({

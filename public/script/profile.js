@@ -119,6 +119,7 @@ function filterHandler() {
   alert("submit");
 }
 
+// main funtion
 if (hasParams("createBy")) {
   var createBy = getParams("createBy");
 } else {
@@ -126,14 +127,7 @@ if (hasParams("createBy")) {
 }
 
 getEleId("user_img").src = `/img/${createBy}`;
-
-if (type == "jwt") {
-  reqJobs(`/api/v1/jobs/jwt?createBy=${createBy}`, options);
-} else if (type == "session") {
-  reqJobs(`/api/v1/jobs/session?createBy=${createBy}`);
-} else {
-  location.href = "/login.html";
-}
+reqJobs(`/api/v1/jobs?createBy=${createBy}`, options);
 
 function getOptionValue(options) {
   let value;
@@ -158,16 +152,9 @@ filterOBtn.addEventListener("click", () => {
   console.log({ orderValue, sortValue });
 
   setLoading(true);
-  if (type == "jwt") {
-    reqJobs(
-      `/api/v1/jobs/jwt?createBy=${createBy}&sortBy=${sortValue}&orderBy=${orderValue}`,
-      options
-    );
-  } else if (type == "session") {
-    reqJobs(`/api/v1/jobs/session?createBy=${createBy}&sortBy=${sortValue}&orderBy=${orderValue}`);
-  } else {
-    location.href = "/login.html";
-  }
+
+  reqJobs(`/api/v1/jobs?createBy=${createBy}&sortBy=${sortValue}&orderBy=${orderValue}`, options);
+
   filterBoxContainer.classList.remove("active");
 });
 

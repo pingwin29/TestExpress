@@ -158,7 +158,7 @@
 
   <script src="./helper/check_user_type.mjs"></script>
   <script>
-    axios.get(`/api/v1/jwt/users/${getParams("id")}`, options).then((res) => {
+    axios.get(`/api/v1/users/${getParams("id")}`, options).then((res) => {
       getEleId("name").value = res.data.user.name;
       getEleId("name").readOnly = false;
       getEleId("submit").disabled = false;
@@ -189,7 +189,7 @@
       const formData = new FormData(document.getElementById("form"));
 
       axios
-        .patch(`/api/v1/jwt/users/1232`, formData, options)
+        .patch(`/api/v1/users/1232`, formData, options)
         .then((res) => {
           const token = res.data.token;
           localStorage.setItem("token", token);
