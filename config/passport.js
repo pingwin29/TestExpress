@@ -31,7 +31,7 @@ passport.use(
       const { email } = _json;
 
       const user = await User.findOne({ email: email, userType: "google" });
-      if (user.length != 0) {
+      if (user != null) {
         done(null, user.id);
       } else {
         console.log("new Users");
