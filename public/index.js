@@ -102,26 +102,8 @@ function setLoading(con) {
   content.style.display = con ? "none" : "block";
 }
 
-// function setPagination(currentPage, totalPage) {
-//   const generatePage = () => {
-//     let data = "";
-//     for (let index = 1; index <= totalPage; index++) {
-//       if (index == currentPage) {
-//         data += `<a class='active' onclick="reqWithPagination(${index})">${index}</a>`;
-//         continue;
-//       }
-//       data += `<a onclick="reqWithPagination(${index})">${index}</a>`;
-//     }
-//     return data;
-//   };
-
-//   paginationContainer.innerHTML = `
-// ${generatePage()}`;
-// }
-
-//if req sucessfull
-
 function renderData(res) {
+  console.log({ res });
   let { user, jobs, currentPage, totalPage } = res.data;
   document.getElementById("user_name").innerText = user.name;
 
@@ -139,11 +121,13 @@ function renderData(res) {
 function reqJobs(url, option = {}) {
   try {
     //request jobs
+    console.log({ url, option });
     axios
       .get(url, option)
       .then((res) => {
         console.log({ res });
         renderData(res);
+        setPgn(res);
         setLoading(false);
       })
       .catch((err) => {
@@ -159,14 +143,42 @@ function reqJobs(url, option = {}) {
 function reqWithPagination(index) {
   setLoading(true);
   if (type == "jwt") {
-    reqJobs(`/api/v1/jobs/jwt?page=${index}&perPage=5`, options);
+    reqJobs(`/api/v1/jobs/jwt?page=${index}&perPage=15`, options);
   } else {
-    reqJobs(`/api/v1/jobs/session?page=${index}&perPage=5`);
+    reqJobs(`/api/v1/jobs/session?page=${index}&perPage=15`);
   }
 }
 
+function setPgn(res) {
+  const { currentPage, totalPage } = res.data;
+  let content = "";
+  for (let page = 1; page <= totalPage; page++) {
+    content += `<div class="pgn_button ${currentPage == page ? "active" : ""}">${page}</div>`;
+  }
+
+  $(".pgn").html(content);
+
+  //pagination libaray
+  $(function () {
+    var button = $(".pgn_button");
+    function switchToNext() {
+      var _this = $(this);
+      let text = _this.text();
+      reqJobs(`/api/v1/jobs?perPage=15&page=${text}`, options);
+      setLoading(true);
+      if (_this.hasClass("active")) {
+        return false;
+      } else {
+        $(".pgn_button.active").removeClass("active");
+        _this.addClass("active");
+      }
+    }
+    button.on("click", switchToNext);
+  });
+}
+
 // main start point
-reqJobs(`/api/v1/jobs`, options);
+reqJobs(`/api/v1/jobs?perPage=15`, options);
 
 //logout btn
 logoutBtn.addEventListener("click", function (e) {

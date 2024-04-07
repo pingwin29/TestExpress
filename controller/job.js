@@ -5,27 +5,35 @@ const User = require("../model/User");
 
 const AllJobs = async (req, res, next) => {
   try {
+    console.log(req.query);
     const search = req.query.search || "";
+
     const page = req.query.page || 1;
-    const totalJobs = await Jobs.count({});
-    const perPageItem = req.query.perPage || totalJobs;
+
+    const perPageItem = parseInt(req.query.perPage) || 15;
     const createBy = req.query.createBy || "";
     const sortBy = req.query.sortBy || "createdAt";
     const orderBy = req.query.orderBy || -1;
+
     let sort = {};
     sort[sortBy] = orderBy;
+
     let findOption = {
       position: { $regex: search, $options: "i" },
     };
     if (createBy !== "") {
       findOption = { position: { $regex: search, $options: "i" }, createBy };
     }
-    const totalPage = Math.ceil(totalJobs / perPageItem);
+
     const jobs = await Jobs.find(findOption)
       .sort(sort)
       .skip((page - 1) * perPageItem)
       .limit(perPageItem)
       .populate("createBy");
+
+    const totalJobs = await Jobs.countDocuments(findOption);
+    const totalPage = Math.ceil(totalJobs / perPageItem);
+
     res.status(200).json({
       jobs: jobs,
       user: req.user,
