@@ -93,7 +93,7 @@ function createJobListing(jobData, CurrentUserData) {
             </div>
             <div class="job_footer">
               <span class="declined ${status}">${status}</span>
-              <button class="btn detail_btn">Detail</button>
+              <a class="btn detail_btn" href="/jobdetail.html?id=${_id}">Detail</a>
             </div>
             `;
 

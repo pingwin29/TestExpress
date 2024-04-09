@@ -5,7 +5,7 @@ getEleId("form").addEventListener("submit", (e) => {
     .post(`/api/v1/jobs`, formData, options)
     .then((res) => {
       console.log({ res });
-      // window.location.href = `/`;
+      window.location.href = `/`;
     })
     .catch((err) => {
       alert(error.response.data.error);
