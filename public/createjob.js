@@ -4,7 +4,8 @@ getEleId("form").addEventListener("submit", (e) => {
   axios
     .post(`/api/v1/jobs`, formData, options)
     .then((res) => {
-      window.location.href = `/`;
+      console.log({ res });
+      // window.location.href = `/`;
     })
     .catch((err) => {
       alert(error.response.data.error);

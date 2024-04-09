@@ -4,6 +4,11 @@ const GoogleUsers = require("./GoogleUser");
 
 const JobSchema = new Schema(
   {
+    gender: { type: String },
+    requirement: { type: String },
+    salary: { type: String },
+    location: { type: String },
+    job_description: { type: String },
     company: {
       type: String,
       required: [true, "please provide company name"],

@@ -14,6 +14,9 @@ const filterOpenBtn = getEleId("filter_open_box_btn");
 const filterBoxContainer = getEleId("filter_box_conatainer");
 const filterCloseBtn = getEleId("filter_close_box_btn");
 
+let filter_data = "";
+let search_data = "";
+
 //delete job fun
 function deletejobProcess(url, Element, option = {}) {
   axios
@@ -64,7 +67,8 @@ function createDateFormat(jobcreateDate) {
 //for display create list card html
 function createJobListing(jobData, CurrentUserData) {
   const { name, userId } = CurrentUserData;
-  const { position, company, createdAt, status, userType, _id, createBy } = jobData;
+  const { position, company, createdAt, status, userType, _id, createBy } =
+    jobData;
   const formattedDate = createDateFormat(createdAt);
 
   profileBtn.setAttribute("id", userId);
@@ -153,7 +157,9 @@ function setPgn(res) {
   const { currentPage, totalPage } = res.data;
   let content = "";
   for (let page = 1; page <= totalPage; page++) {
-    content += `<div class="pgn_button ${currentPage == page ? "active" : ""}">${page}</div>`;
+    content += `<div class="pgn_button ${
+      currentPage == page ? "active" : ""
+    }">${page}</div>`;
   }
 
   $(".pgn").html(content);
@@ -164,7 +170,13 @@ function setPgn(res) {
     function switchToNext() {
       var _this = $(this);
       let text = _this.text();
-      reqJobs(`/api/v1/jobs?perPage=15&page=${text}`, options);
+      reqJobs(
+        `/api/v1/jobs?perPage=15&page=${text}&${filter_data}&${search_data}`,
+        options
+      );
+      console.log(
+        `/api/v1/jobs?perPage=15&page=${text}&${filter_data}&${search_data}`
+      );
       setLoading(true);
       if (_this.hasClass("active")) {
         return false;
@@ -194,7 +206,9 @@ logoutBtn.addEventListener("click", function (e) {
 });
 
 profileBtn.addEventListener("click", () => {
-  window.location.href = `/profile.html?createBy=${profileBtn.getAttribute("id")}`;
+  window.location.href = `/profile.html?createBy=${profileBtn.getAttribute(
+    "id"
+  )}`;
 });
 
 searchTextEle.addEventListener("keydown", (event) => {
@@ -202,7 +216,8 @@ searchTextEle.addEventListener("keydown", (event) => {
     setLoading(true);
 
     const searchKeyWord = searchTextEle.value;
-    reqJobs(`/api/v1/jobs?search=${searchKeyWord}`, options);
+    search_data = `search=${searchKeyWord}`;
+    reqJobs(`/api/v1/jobs?search=${searchKeyWord}&${filter_data}`, options);
   }
 });
 
@@ -240,11 +255,13 @@ filterOBtn.addEventListener("click", () => {
   const orderValue = getOptionValue(orderOptions);
   const sortValue = getOptionValue(sortOptions);
 
-  console.log({ orderValue, sortValue });
-
   setLoading(true);
+  filter_data = `sortBy=${sortValue}&orderBy=${orderValue}`;
 
-  reqJobs(`/api/v1/jobs?sortBy=${sortValue}&orderBy=${orderValue}`, options);
+  reqJobs(
+    `/api/v1/jobs?sortBy=${sortValue}&orderBy=${orderValue}&${search_data}`,
+    options
+  );
   filterBoxContainer.classList.remove("active");
 });
 

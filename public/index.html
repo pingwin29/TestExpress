@@ -6,10 +6,13 @@
     <title>Document</title>
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="./style/index.css" />
   </head>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="./helper/check_user_type.mjs"></script>
+
   <body>
     <div class="loading-page" id="loading-page">
       <div class="loader"></div>
@@ -18,7 +21,9 @@
     <!-- for mobile menu  -->
     <section id="menu_container_mobile" class="menu_container_mobile">
       <div class="close_btn_container">
-        <button class="close_btn" id="close_btn"><i class="fa fa-remove"></i></button>
+        <button class="close_btn" id="close_btn">
+          <i class="fa fa-remove"></i>
+        </button>
       </div>
       <ul class="menu_mobile">
         <li class="menu active">Jobs</li>
@@ -32,22 +37,37 @@
       <div class="filter_box_conatainer" id="filter_box_conatainer">
         <div class="filter_box_header">
           <p class="title">Filter</p>
-          <button class="btn" id="filter_close_box_btn"><i class="fa fa-close"></i></button>
+          <button class="btn" id="filter_close_box_btn">
+            <i class="fa fa-close"></i>
+          </button>
         </div>
         <div class="filter_box_main">
           <div class="filter_box">
             <h5 class="filter_name">Sort By</h5>
             <div class="filter_options">
               <div class="filter_option">
-                <input type="radio" name="sort" value="createdAt" checked id="createDate" />
+                <input
+                  type="radio"
+                  name="sort"
+                  value="createdAt"
+                  checked
+                  id="createDate" />
                 <label for="createDate">createDate</label>
               </div>
               <div class="filter_option">
-                <input type="radio" name="sort" value="position" id="position" />
+                <input
+                  type="radio"
+                  name="sort"
+                  value="position"
+                  id="position" />
                 <label for="position">Position</label>
               </div>
               <div class="filter_option">
-                <input type="radio" name="sort" value="updatedAt" id="updateDate" />
+                <input
+                  type="radio"
+                  name="sort"
+                  value="updatedAt"
+                  id="updateDate" />
                 <label for="updateDate">updateDate</label>
               </div>
             </div>
@@ -82,7 +102,9 @@
       <div class="helper_div">
         <nav>
           <div class="menu_container_mobile_btn">
-            <button class="btn" id="menu_m_btn"><i class="fa fa-navicon"></i></button>
+            <button class="btn" id="menu_m_btn">
+              <i class="fa fa-navicon"></i>
+            </button>
           </div>
           <ul class="menu_container">
             <li class="menu acitve">Jobs</li>
@@ -95,13 +117,20 @@
                 <i class="fa fa-chevron-down dropdown_icon"></i
                 ><span id="user_name">User Name</span>
               </h3>
-              <img class="user_avt" id="profile_img" width="30" height="30" srcset="" />
+              <img
+                class="user_avt"
+                id="profile_img"
+                width="30"
+                height="30"
+                srcset="" />
             </div>
             <ul class="dropdown_item_container" id="dropdown_item_container">
               <li class="dropdown_item" id="profile_btn">
                 <i class="fa fa-user-o dropdown_icon"></i>Profile
               </li>
-              <li class="dropdown_item"><i class="fa fa-gear dropdown_icon"></i>Setting</li>
+              <li class="dropdown_item">
+                <i class="fa fa-gear dropdown_icon"></i>Setting
+              </li>
 
               <li class="dropdown_item" id="logout_btn">
                 <i class="fa fa-sign-out dropdown_icon"></i>Logout
@@ -120,8 +149,7 @@
             type="text"
             class="search_box"
             name=""
-            id=""
-          />
+            id="" />
           <button class="btn filter_btn" id="filter_open_box_btn">
             <i class="fa fa-sliders"></i>
           </button>
@@ -136,17 +164,12 @@
         </div>
       </main>
 
-      <a href="/createjob.html" class="round_btn a_link"><i class="fa fa-plus"></i></a>
+      <a href="/createjob.html" class="round_btn a_link"
+        ><i class="fa fa-plus"></i
+      ></a>
 
       <!-- <footer></footer> -->
     </section>
   </body>
-  <!-- <script src="./helper/check_user_type.mjs"></script> -->
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <!-- <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script> -->
-  <!-- <script src="./helper/check_user_type.mjs" type="module"></script> -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="./helper/check_user_type.mjs"></script>
-  <script src="/path/to/cdn/jquery.slim.min.js"></script>
   <script src="./index.js"></script>
 </html>

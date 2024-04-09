@@ -63,7 +63,8 @@ const createJob = async (req, res, next) => {
   try {
     const userType = req.user.type == "jwt" ? "Users" : "GoogleUsers";
     console.log({ req });
-    const { company, position } = req.body;
+    // const { company, position } = req.body;
+
     console.log({ userType });
     const job = await Jobs.create({
       ...req.body,
@@ -71,7 +72,7 @@ const createJob = async (req, res, next) => {
       userType,
     });
 
-    res.status(201).json({ job });
+    res.status(201).json(req.body);
   } catch (err) {
     next(err);
   }
@@ -122,4 +123,11 @@ const deleteJob = async (req, res, next) => {
 const SearchJobs = async (req, res, next) => {
   res.send("successful");
 };
-module.exports = { AllJobs, SingleJob, createJob, updateJob, deleteJob, SearchJobs };
+module.exports = {
+  AllJobs,
+  SingleJob,
+  createJob,
+  updateJob,
+  deleteJob,
+  SearchJobs,
+};

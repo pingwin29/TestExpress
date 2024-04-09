@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Marcellus&family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background: #f2f2f2;
+  font-family: "Roboto Mono", monospace;
+  color: #5f6363;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.container {
+  max-width: 1000px;
+  margin: auto;
+  background-color: #fff;
+  padding: 25px;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+.position {
+  color: #20dfcd;
+  font-size: 20px;
+}
+.jd_header {
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+  border-bottom: 0.1px solid rgba(0, 0, 0, 0.1);
+}
+
+.jd_header h1 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 400;
+  font-size: 24;
+}
+
+.header > div:first-of-type {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.header > div:first-of-type i {
+  color: #117c72;
+}
+
+.header > div:nth-child(2) {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  align-items: center;
+}
+.header > div:nth-child(2) i {
+  margin-right: 5px;
+}
+.jd_header ul > li {
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  width: 250px;
+}
+.jd_header ul p {
+  width: 100%;
+  text-align: left;
+}
+.header ul {
+  list-style: none;
+}
+.jd_body {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-bottom: 25px;
+}
+.jd_footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.apply_btn {
+  color: #fff;
+  background: #20dfcd;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.apply_btn:hover {
+  background: #117c72;
+}
+.jd_body h4 {
+  font-size: 18px;
+  font-weight: 600;
+}
+.jd_body p {
+  font-size: 16px;
+  text-align: justify;
+}
